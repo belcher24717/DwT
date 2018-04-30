@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-    public const float spawnDelay = 1f;     // Delay before spawn starts (may not be necessary long term as there will probably be outside delay before activating spawner)
+    public float spawnDelay = 1f;     // Delay before spawn starts (may not be necessary long term as there will probably be outside delay before activating spawner)
 
     public int enemyCount;                  // number of enemies to spawn
     public float spawnTimer;                // Delay between each enemy spawn (might be passed in?)
@@ -16,7 +16,7 @@ public class EnemySpawner : MonoBehaviour
 	// Use this for initialization
 	void Start ()
     {
-        spawnPoint = new Vector3(1f, 1f, 50f);
+        spawnPoint = this.gameObject.transform.position;// new Vector3(1f, 1f, 50f);
 
         // find the destination GameObject
         destination = GameObject.Find("Destination");
