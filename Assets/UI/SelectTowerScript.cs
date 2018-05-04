@@ -2,55 +2,68 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SelectTowerScript : MonoBehaviour {
+public class SelectTowerScript : ClickSpawnScript
+{
+    /// <summary>
+    /// The Tower that will spawn on click
+    /// </summary>
+    public GameObject Tower;
 
-    public GameObject tower;                                // The Tower that this script will spawn on click
-    public bool isSelected;
-
-    private ArrayList towerSelectors = new ArrayList();     // A list of all tower selectors
+    private bool _selected;
+    public bool Selected
+    {
+        get
+        {
+            return _selected;
+        }
+        set
+        {
+            _selected = value;
+            gameObject.GetComponent<Renderer>().material.color = _selected ?  Color.red : Color.grey;
+        }
+    }
 
     void Awake()
     {
-        // every Tower Selector has a list of every existing Tower Selector in the game
-        towerSelectors.Add(GameObject.Find("Tower Selector 1"));
-        towerSelectors.Add(GameObject.Find("Tower Selector 2"));
-        // ...
+
     }
 
     // Use this for initialization
-    void Start ()
+    void Start()
     {
-        isSelected = false;
-	}
-	
-	// Update is called once per frame
-	void Update ()
+        Selected = false;
+        SetMesh();
+    }
+
+    // Update is called once per frame
+    void Update()
     {
 
-	}
+    }
+
+    private void SetMesh()
+    {
+        MeshFilter[] meshes = Tower.GetComponentsInChildren<MeshFilter>();
+        CombineInstance[] combinedMeshes = new CombineInstance[meshes.Length];
+
+        for (int i = 0; i < combinedMeshes.Length; i++)
+        {
+            combinedMeshes[i].mesh = meshes[i].sharedMesh;
+            combinedMeshes[i].transform = meshes[i].transform.localToWorldMatrix;
+        }
+
+        gameObject.GetComponent<MeshFilter>().mesh.CombineMeshes(combinedMeshes);
+    }
 
     private void OnMouseDown()
     {
-
-        if (!isSelected)
+        if (!Selected)
         {
-            // deselect current selection
-            foreach (GameObject selector in towerSelectors)
-            {
-                SelectTowerScript script = selector.GetComponent<SelectTowerScript>(); 
-                if (script.isSelected)
-                {
-                    script.isSelected = false;
-                    selector.GetComponent<Renderer>().material.color = Color.grey;
-                }
-            }
-
-            // set the tower to spawn, set selected Tower Selector color to red
-            isSelected = true;
-            ClickSpawnScript.selectedTower = tower;
-            GetComponent<Renderer>().material.color = Color.red;
-
+            ResetSelection();
+            Selected = true;
         }
+        else
+            ResetSelection();
 
     }
 
