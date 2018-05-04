@@ -5,7 +5,7 @@ using UnityEngine;
 public class ClickSpawnScript : MonoBehaviour
 {
 
-    public GameObject tower;                            // The tower prefab to place on click (will be passed in, will need checks for resources, etc)
+    public static GameObject selectedTower;                     // The tower prefab to place on click (will be passed in, will need checks for resources, etc)
 
     private Vector3 buildPoint;                         // the point to build the tower
     private RaycastHit hit;                             // The Ray from camera to point-of-click 
@@ -54,6 +54,6 @@ public class ClickSpawnScript : MonoBehaviour
             }
         }
         // place the tower
-        placedTowers.Add(Instantiate(tower, gridPosition, Quaternion.identity));
+        placedTowers.Add(Instantiate(selectedTower, gridPosition, Quaternion.identity));
     }
 }
