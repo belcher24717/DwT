@@ -11,15 +11,12 @@ public class EnemySpawner : MonoBehaviour
     public GameObject enemyPrefab;          // The enemy prefab (should be passed in)
     public Vector3 spawnPoint;              // The enemy spawn point (might be passed in?)
 
-    private GameObject destination;
+    public GameObject Destination;
 
 	// Use this for initialization
 	void Start ()
     {
         spawnPoint = this.gameObject.transform.position;// new Vector3(1f, 1f, 50f);
-
-        // find the destination GameObject
-        destination = GameObject.Find("Destination");
 
         // repeatedly spawn enemies after 'spawnDelay' time every 'spawnTimer'.
         InvokeRepeating("SpawnEnemy", spawnDelay, spawnTimer);
@@ -43,8 +40,8 @@ public class EnemySpawner : MonoBehaviour
 
         // set enemy destination
         NavMesh navScript = newEnemy.GetComponent<NavMesh>();
-        if (destination != null)
-            navScript.Destination = destination;
+        if (Destination != null)
+            navScript.Destination = Destination;
     }
 
 }
