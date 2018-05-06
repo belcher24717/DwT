@@ -235,7 +235,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4880963859461294, guid: 7baac54128f48bb4787f4c14211d6631, type: 2}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7baac54128f48bb4787f4c14211d6631, type: 2}
@@ -402,7 +402,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23575933d8974bf4e88d71da3a5d368c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnDelay: 20
+  spawnDelay: 120
   enemyCount: 10
   spawnTimer: 1
   enemyPrefab: {fileID: 1911056296109644, guid: ebb422242620ff843aae8855c6c7fae5,
@@ -422,12 +422,12 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1068792508}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1, y: 1, z: 25}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 1.1582184, y: 0.244, z: 47.86}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1089178841
 GameObject:
