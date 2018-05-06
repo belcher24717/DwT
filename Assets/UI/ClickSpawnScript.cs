@@ -8,15 +8,15 @@ public class ClickSpawnScript : MonoBehaviour
     private RaycastHit hit;                             // The Ray from camera to point-of-click
     [SerializeField]
     private Grid grid;                                  // The grid for placing towers
-    private static GameObject cursorTower;
-    private GameObject placedCursorTower;
-    protected bool gridPositionChanged;
+    private static GameObject cursorTower;              // the tower that follows the cursor
+    private GameObject placedCursorTower;               // a reference to the cursor tower that's actually placed
+    protected bool gridPositionChanged;                 // true if the cursor has changed grid positions
     private ArrayList placedTowers = new ArrayList();   // A list of all placed towers
 
-    private static List<SelectTowerScript> _towers;
+    private static List<SelectTowerScript> _towers;     // a static list of all selectable towers (UI)
 
-    private static GameObject selectedTower;
-    public static GameObject SelectedTower
+    private static GameObject selectedTower;            // a static reference to the currently selected tower
+    public static GameObject SelectedTower              // property
     {
         get
         {
@@ -26,8 +26,8 @@ public class ClickSpawnScript : MonoBehaviour
         }
     }
 
-    private Vector3 gridPosition;
-    public Vector3 GridPosition
+    private Vector3 gridPosition;                       // the current grid position in relation to the cursor
+    public Vector3 GridPosition                         // property
     {
         get
         {
@@ -107,11 +107,10 @@ public class ClickSpawnScript : MonoBehaviour
         if (placedCursorTower != null)
             GameObject.Destroy(placedCursorTower);
 
-        // place the tower
         GameObject placedTower = Instantiate(towerToUse, GridPosition, Quaternion.identity);
-        if (!placeCursorTower)
+        if (!placeCursorTower)  // place actual tower
             placedTowers.Add(placedTower);
-        else
+        else                    // else place cursor tower 
             placedCursorTower = placedTower; 
     }
 }

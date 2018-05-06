@@ -6,35 +6,115 @@ using UnityEngine;
 public class MoveCameraScript : MonoBehaviour
 {
 
+    private int screenWidth;                // the width of the screen on game start
+    private int screenHeight;               // the height of the screen on game start
+    private float speed = 15f;              // the speed of the camera movement
+    private float zoomSpeed = 15f;          // the speed of the camera zoom
+    private float rotateSpeed = 10f;        // the speed of the camera rotation
+    private bool hasFocus;                  // true if application has focus
+    private float maxCameraZoom = 30f;      // the max amount you can zoom the camera
+    private float maxCameraRotation = 45f;  // the max amount you can rotate the camera
+    private float defaultCameraZoom;        // the default camera zoom (on start)
+    private float defaultCameraRotation;    // the default camera rotation (on start) 
+
     // Use this for initialization
     void Start ()
     {
-
+        screenWidth = Screen.width;
+        screenHeight = Screen.height;
+        defaultCameraZoom = transform.position.z;
+        defaultCameraRotation = transform.rotation.z;
     }
 	
 	// Update is called once per frame
 	void Update ()
     {
-        // probably want this to also incorporate edge of screen mouse movement, also, should not double speed when common-direction keys are pressed...
+        //TODO: Should not double speed when common-direction keys are pressed, fix this...
+        // move camera on WASD and Arrow Keys
         if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
-        {
-            transform.Translate(new Vector3(-15f * Time.deltaTime, 0, 0));
-        }
-
+            MoveCameraLeft();
         if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
-        {
-            transform.Translate(new Vector3(15f * Time.deltaTime, 0, 0));
-        }
-
+            MoveCameraRight();
         if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
+            MoveCameraUp();
+        if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
+            MoveCameraDown();
+
+        // move camera on mouse hitting edge
+        if (Input.mousePosition.x > screenWidth && hasFocus)
+            MoveCameraRight();
+        if (Input.mousePosition.x < 0 && hasFocus)
+            MoveCameraLeft();
+        if (Input.mousePosition.y > screenHeight && hasFocus)
+            MoveCameraUp();
+        if (Input.mousePosition.y < 0 && hasFocus)
+            MoveCameraDown();
+
+        // magnify and rotate camera towards gamespace w/ mousewheel backward
+        if (Input.GetAxis("Mouse ScrollWheel") > 0)
         {
-            transform.Translate(new Vector3(0, 15f * Time.deltaTime, 0));
+            if (!(transform.position.z >= defaultCameraZoom - maxCameraZoom))
+                ZoomCameraForward();
+        }
+        if (Input.GetAxis("Mouse ScrollWheel") < 0)
+        {
+            if (!(transform.position.z <= defaultCameraZoom))
+                ZoomCameraBackward();
         }
 
-        if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
-        {
-            transform.Translate(new Vector3(0, -15F * Time.deltaTime, 0));
-        }
+        // separate camera zoom and rotation? Rotation would go here...
+    }
+
+    void OnApplicationFocus(bool focus)
+    {
+        hasFocus = focus;
+    }
+
+    void MoveCameraRight()
+    {
+        transform.Translate(new Vector3(speed * Time.deltaTime, 0, 0));
+    }
+
+    void MoveCameraUp()
+    {
+        transform.Translate(new Vector3(0, speed * Time.deltaTime, 0));
+    }
+
+    void MoveCameraLeft()
+    {
+        transform.Translate(new Vector3(-speed * Time.deltaTime, 0, 0));
+    }
+
+    void MoveCameraDown()
+    {
+        transform.Translate(new Vector3(0, -speed * Time.deltaTime, 0));
+    }
+
+    void ZoomCameraForward()
+    {
+        transform.Translate(new Vector3(0, 0, -zoomSpeed * Time.deltaTime));
+    }
+
+    void ZoomCameraBackward()
+    {
+        transform.Translate(new Vector3(0, 0, zoomSpeed * Time.deltaTime));
+    }
+
+    void RotateCameraDown()
+    {
 
     }
+
+    void RotateCameraUp()
+    {
+
+    }
+
+    //void OnGUI()
+    //{
+    //    GUI.Box(Rect((Screen.width / 2) - 140, 5, 280, 25), "Mouse Position = " + Input.mousePosition);
+    //    GUI.Box(Rect((Screen.width / 2) - 70, Screen.height - 30, 140, 25), "Mouse X = " + Input.mousePosition.x);
+    //    GUI.Box(Rect(5, (Screen.height / 2) - 12, 140, 25), "Mouse Y = " + Input.mousePosition.y);
+    //}
+
 }
