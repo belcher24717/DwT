@@ -10,9 +10,9 @@ public class MoveCameraScript : MonoBehaviour
     private int screenHeight;               // the height of the screen on game start
     private float speed = 15f;              // the speed of the camera movement
     private float zoomSpeed = 15f;          // the speed of the camera zoom
-    private float rotateSpeed = 10f;        // the speed of the camera rotation
+    private float rotateSpeed = 30f;        // the speed of the camera rotation
     private bool hasFocus;                  // true if application has focus
-    private float maxCameraZoom = 30f;      // the max amount you can zoom the camera
+    private float maxCameraZoom = 15f;      // the max amount you can zoom the camera
     private float maxCameraRotation = 45f;  // the max amount you can rotate the camera
     private float defaultCameraZoom;        // the default camera zoom (on start)
     private float defaultCameraRotation;    // the default camera rotation (on start) 
@@ -22,8 +22,8 @@ public class MoveCameraScript : MonoBehaviour
     {
         screenWidth = Screen.width;
         screenHeight = Screen.height;
-        defaultCameraZoom = transform.position.z;
-        defaultCameraRotation = transform.rotation.z;
+        defaultCameraZoom = transform.position.y;
+        defaultCameraRotation = transform.rotation.y;
     }
 	
 	// Update is called once per frame
@@ -51,14 +51,15 @@ public class MoveCameraScript : MonoBehaviour
             MoveCameraDown();
 
         // magnify and rotate camera towards gamespace w/ mousewheel backward
-        if (Input.GetAxis("Mouse ScrollWheel") > 0)
+        float temp = Input.GetAxis("Mouse ScrollWheel");
+        if (Input.GetAxis("Mouse ScrollWheel") > 0f)
         {
-            if (!(transform.position.z >= defaultCameraZoom - maxCameraZoom))
+            if (transform.position.y > defaultCameraZoom - maxCameraZoom)
                 ZoomCameraForward();
         }
-        if (Input.GetAxis("Mouse ScrollWheel") < 0)
+        if (Input.GetAxis("Mouse ScrollWheel") < 0f)
         {
-            if (!(transform.position.z <= defaultCameraZoom))
+            if (transform.position.y < defaultCameraZoom)
                 ZoomCameraBackward();
         }
 
@@ -72,42 +73,34 @@ public class MoveCameraScript : MonoBehaviour
 
     void MoveCameraRight()
     {
-        transform.Translate(new Vector3(speed * Time.deltaTime, 0, 0));
+        transform.Translate(new Vector3(speed * Time.deltaTime, 0, 0), Space.World);
     }
 
     void MoveCameraUp()
     {
-        transform.Translate(new Vector3(0, speed * Time.deltaTime, 0));
+        transform.Translate(new Vector3(0, 0, speed * Time.deltaTime), Space.World);
     }
 
     void MoveCameraLeft()
     {
-        transform.Translate(new Vector3(-speed * Time.deltaTime, 0, 0));
+        transform.Translate(new Vector3(-speed * Time.deltaTime, 0, 0), Space.World);
     }
 
     void MoveCameraDown()
     {
-        transform.Translate(new Vector3(0, -speed * Time.deltaTime, 0));
+        transform.Translate(new Vector3(0, 0, -speed * Time.deltaTime), Space.World);
     }
 
     void ZoomCameraForward()
     {
-        transform.Translate(new Vector3(0, 0, -zoomSpeed * Time.deltaTime));
+        transform.Translate(new Vector3(0, -zoomSpeed * Time.deltaTime, 0), Space.World);
+        transform.Rotate(new Vector3(1, 0, 0), -rotateSpeed * Time.deltaTime, Space.World);
     }
 
     void ZoomCameraBackward()
     {
-        transform.Translate(new Vector3(0, 0, zoomSpeed * Time.deltaTime));
-    }
-
-    void RotateCameraDown()
-    {
-
-    }
-
-    void RotateCameraUp()
-    {
-
+        transform.Translate(new Vector3(0, zoomSpeed * Time.deltaTime, 0), Space.World);
+        transform.Rotate(new Vector3(1, 0, 0), rotateSpeed * Time.deltaTime, Space.World);
     }
 
     //void OnGUI()

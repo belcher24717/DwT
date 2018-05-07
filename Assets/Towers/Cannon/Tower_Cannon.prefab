@@ -54,6 +54,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4723193655262754}
   - component: {fileID: 208690331109573700}
+  - component: {fileID: 95918100118578538}
   m_Layer: 0
   m_Name: Tower_Cannon
   m_TagString: Untagged
@@ -176,14 +177,31 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1214738506401674}
-  m_Mesh: {fileID: 4300000, guid: e0d0f20ff68c84a40ade43b5d0a00916, type: 3}
+  m_Mesh: {fileID: 4300000, guid: 5d6850e56f38f6147add659b95e435d7, type: 3}
 --- !u!33 &33582700552891612
 MeshFilter:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1538846587316864}
-  m_Mesh: {fileID: 4300002, guid: e0d0f20ff68c84a40ade43b5d0a00916, type: 3}
+  m_Mesh: {fileID: 4300002, guid: 5d6850e56f38f6147add659b95e435d7, type: 3}
+--- !u!95 &95918100118578538
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1914277414908904}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: 5d6850e56f38f6147add659b95e435d7, type: 3}
+  m_Controller: {fileID: 9100000, guid: 3b1cdffa7d0256f438376f7094bcc516, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!208 &208690331109573700
 NavMeshObstacle:
   m_ObjectHideFlags: 1

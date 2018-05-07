@@ -32,14 +32,16 @@ public class EnemySpawner : MonoBehaviour
     void SpawnEnemy()
     {
         // stop when all enemies have been spawned
-        if (enemyCount-- <= 0)
+        if (enemyCount <= 0)
             return;
+
+        --enemyCount;
 
         // instantiate the enemy prefab
         GameObject newEnemy = Instantiate(enemyPrefab, spawnPoint, Quaternion.identity);
 
         // set enemy destination
-        NavMesh navScript = newEnemy.GetComponent<NavMesh>();
+        CorrectNavMeshAgentScript navScript = newEnemy.GetComponent<CorrectNavMeshAgentScript>();
         if (Destination != null)
             navScript.Destination = Destination;
     }

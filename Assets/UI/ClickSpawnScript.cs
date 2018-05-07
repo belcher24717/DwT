@@ -8,7 +8,7 @@ public class ClickSpawnScript : MonoBehaviour
     private RaycastHit hit;                             // The Ray from camera to point-of-click
     [SerializeField]
     private Grid grid;                                  // The grid for placing towers
-    private static GameObject cursorTower;              // the tower that follows the cursor
+               // the tower that follows the cursor
     private GameObject placedCursorTower;               // a reference to the cursor tower that's actually placed
     protected bool gridPositionChanged;                 // true if the cursor has changed grid positions
     private ArrayList placedTowers = new ArrayList();   // A list of all placed towers
@@ -21,8 +21,19 @@ public class ClickSpawnScript : MonoBehaviour
         get
         {
             if (selectedTower == null)
-                cursorTower = selectedTower = _towers.FirstOrDefault(t => t.Selected)?.Tower;
+                selectedTower = _towers?.FirstOrDefault(t => t.Selected)?.Tower;
             return selectedTower;
+        }
+    }
+
+    private static GameObject cursorTower;            // a static reference to the currently selected tower
+    public static GameObject CursorTower              // property
+    {
+        get
+        {
+            if (cursorTower == null)
+                cursorTower = _towers?.FirstOrDefault(t => t.Selected)?.CursorTower;
+            return cursorTower;
         }
     }
 
@@ -44,7 +55,7 @@ public class ClickSpawnScript : MonoBehaviour
     }
 
     // Use this for initialization
-    void Start()
+    void Awake()
     {
         _towers = new List<SelectTowerScript>(transform.GetComponentsInChildren<SelectTowerScript>());
     }
@@ -82,12 +93,12 @@ public class ClickSpawnScript : MonoBehaviour
     {
         _towers.ForEach(t => t.Selected = false);
         selectedTower = null;
+        cursorTower = null;
     }
 
     void PlaceTowerOnGrid (Vector3 buildPoint, bool placeCursorTower)
     {
-
-        GameObject towerToUse = placeCursorTower ? cursorTower : SelectedTower;
+        GameObject towerToUse = placeCursorTower ? CursorTower : SelectedTower;
         if (towerToUse == null)
             return;
 

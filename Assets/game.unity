@@ -402,7 +402,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23575933d8974bf4e88d71da3a5d368c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnDelay: 120
+  spawnDelay: 60
   enemyCount: 10
   spawnTimer: 1
   enemyPrefab: {fileID: 1911056296109644, guid: ebb422242620ff843aae8855c6c7fae5,
@@ -423,7 +423,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1068792508}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.1582184, y: 0.244, z: 47.86}
+  m_LocalPosition: {x: 1.475, y: 0.5, z: 47.627}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -463,6 +463,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   grid: {fileID: 0}
   Tower: {fileID: 1914277414908904, guid: a7d520cd7d07c8144a4ef34c9c3f5a20, type: 2}
+  CursorTower: {fileID: 1884115408996198, guid: 3ef402eaf01dcdf43b5dc1da6b0cbd0e,
+    type: 2}
 --- !u!23 &1089178843
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -553,6 +555,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   grid: {fileID: 0}
   Tower: {fileID: 1380916464320458, guid: aa4df9b18504b3f498a0c96cfe07d1d3, type: 2}
+  CursorTower: {fileID: 1321692596006436, guid: fc7cf1e198666734282e491ed1c36867,
+    type: 2}
 --- !u!23 &1134641925
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -723,6 +727,12 @@ Prefab:
       propertyPath: m_CastShadows
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114790865641998612, guid: e8f8b8aeb6f33d9459e97e22415d3afa,
+        type: 2}
+      propertyPath: CursorTower
+      value: 
+      objectReference: {fileID: 1321692596006436, guid: fc7cf1e198666734282e491ed1c36867,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e8f8b8aeb6f33d9459e97e22415d3afa, type: 2}
   m_IsPrefabParent: 0
@@ -927,6 +937,12 @@ Prefab:
       propertyPath: m_CastShadows
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114790865641998612, guid: e8f8b8aeb6f33d9459e97e22415d3afa,
+        type: 2}
+      propertyPath: CursorTower
+      value: 
+      objectReference: {fileID: 1884115408996198, guid: 3ef402eaf01dcdf43b5dc1da6b0cbd0e,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e8f8b8aeb6f33d9459e97e22415d3afa, type: 2}
   m_IsPrefabParent: 0
