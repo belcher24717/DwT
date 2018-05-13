@@ -38,6 +38,7 @@ GameObject:
   - component: {fileID: 4695580569095244}
   - component: {fileID: 95596544541132838}
   - component: {fileID: 208953650977940522}
+  - component: {fileID: 114854236119017050}
   m_Layer: 0
   m_Name: Tower_Minigun
   m_TagString: Untagged
@@ -367,6 +368,26 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114854236119017050
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1380916464320458}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b59e1d408918ac34b9230a418afe2d3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShotEffects:
+  - {fileID: 198094849683454464}
+  - {fileID: 198452255901186502}
+  TurretSwivel: {fileID: 1888107694221998}
+  Animator: {fileID: 95596544541132838}
+  TurnSpeed: 200
+  FireRate: 0.1
+  Range: 30
+  Damage: 0
 --- !u!198 &198094849683454464
 ParticleSystem:
   m_ObjectHideFlags: 1

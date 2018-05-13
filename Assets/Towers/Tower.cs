@@ -5,23 +5,31 @@ using UnityEngine;
 
 public abstract class Tower : MonoBehaviour
 {
-    protected int _damage;
-    public double FireRate = 1.0;
-    protected int _range;
+    
     protected int _attackType;
     protected Enemy _targetedEnemy;
 
     public ParticleSystem[] ShotEffects;
     public GameObject TurretSwivel;
-    public float TurnSpeed = 100;
-    abstract public void Attack();
-    abstract public Enemy PickEnemy();
+    public Animator Animator;
+    public int TurnSpeed = 200;
+    public double FireRate = 1.0;
+    public double Range = 30;
+    public int Damage;
+
     private bool _canAttack;
     private DateTime _lastAttack;
+
+    abstract public bool Attack();
+    abstract public Enemy PickEnemy();
+
     public void FaceEnemy()
     {
         if (TurretSwivel == null || _targetedEnemy == null)
+        {
+            _canAttack = false;
             return;
+        }
 
         var lookPos =  transform.position - _targetedEnemy.transform.position;
         lookPos.y = 0;
@@ -34,17 +42,23 @@ public abstract class Tower : MonoBehaviour
 
     private void TowerAttack()
     {
-        //if you're not facing close enough, don't attack
         if (!_canAttack)
             return;
 
-        _lastAttack = DateTime.Now;
+        //if the tower is ready to attack
+        if (Attack())
+        {
+            //we're going to attack now
+            foreach (ParticleSystem p in ShotEffects)
+                p.Play();
 
-        //we're going to attack now
-        foreach (ParticleSystem p in ShotEffects)
-            p.Play();
+            _lastAttack = DateTime.Now;
+        }
+    }
 
-        Attack();
+    private bool TargetEnemyInRange()
+    {
+        return Vector3.Distance(_targetedEnemy.gameObject.transform.position, transform.position) <= Range;
     }
 
     // Use this for initialization
@@ -52,13 +66,13 @@ public abstract class Tower : MonoBehaviour
     {
         _targetedEnemy = null;
         _canAttack = false;
-        _lastAttack = DateTime.Now - TimeSpan.FromSeconds(-FireRate);
+        _lastAttack = DateTime.Now - TimeSpan.FromSeconds(FireRate);
     }
 
     // Update is called once per frame
     protected void Update()
     {
-        if (_targetedEnemy == null)
+        if (_targetedEnemy == null || !TargetEnemyInRange())
             _targetedEnemy = PickEnemy();
         else
         {

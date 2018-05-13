@@ -99,7 +99,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1022362578094124}
-  m_LocalRotation: {x: -0.6572754, y: -0.26074713, z: 0.6572754, w: 0.26074713}
+  m_LocalRotation: {x: -0.65727544, y: -0.26074716, z: 0.65727544, w: 0.26074716}
   m_LocalPosition: {x: 0, y: 0.423, z: -0.543}
   m_LocalScale: {x: 2.5, y: 2.5, z: 2.5}
   m_Children: []
@@ -245,11 +245,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e9373f12e0f11e4aa4d8ae82109e8f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FireRate: 1
   ShotEffects:
   - {fileID: 198153661362458212}
   TurretSwivel: {fileID: 1538846587316864}
-  TurnSpeed: 1
+  Animator: {fileID: 95918100118578538}
+  TurnSpeed: 200
+  FireRate: 1
+  Range: 30
+  Damage: 0
 --- !u!198 &198153661362458212
 ParticleSystem:
   m_ObjectHideFlags: 1
