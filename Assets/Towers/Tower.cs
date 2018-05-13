@@ -5,30 +5,32 @@ using UnityEngine;
 public abstract class Tower : MonoBehaviour
 {
     protected int _damage;
-    protected int _fireRate;
+    protected double _fireRate;
     protected int _range;
-    public Particle[] ShotEffects;
-    protected Enemy _targetedEnemy;
+    protected int _attackType;
+    protected GameObject _targetedEnemy;
 
+    public ParticleSystem[] ShotEffects;
 
-    public abstract void Attack();
-    public abstract GameObject PickEnemy();
+    abstract public void Attack(Enemy enemy);
+    abstract public GameObject PickEnemy();
 
     public void FaceEnemy()
     {
-
+        //TODO Tower facing logic goes here...
     }
 
 
     // Use this for initialization
     void Start()
     {
-        
+        _targetedEnemy = null;
     }
 
     // Update is called once per frame
     void Update()
     {
-        //GameObject g = PickEnemy();
+        if (_targetedEnemy != null)
+            FaceEnemy();
     }
 }

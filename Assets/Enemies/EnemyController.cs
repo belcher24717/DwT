@@ -6,9 +6,9 @@ using UnityEngine;
 public class EnemyController : MonoBehaviour
 {
     public static EnemyController Instance;
-    private List<Enemy> _enemiesActive;
+    private List<Enemy> _activeEnemies;
 
-    public ReadOnlyCollection<Enemy> EnemiesActive { get { return _enemiesActive.AsReadOnly(); } }
+    public ReadOnlyCollection<Enemy> ActiveEnemies { get { return _activeEnemies.AsReadOnly(); } }
 
     // Use this for initialization
     void Awake()
@@ -16,7 +16,7 @@ public class EnemyController : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
-            _enemiesActive = new List<Enemy>();
+            _activeEnemies = new List<Enemy>();
         }
         else if (Instance != this)
             GameObject.Destroy(this);
@@ -24,12 +24,12 @@ public class EnemyController : MonoBehaviour
 
     private void RemoveEnemy(Enemy enemy)
     {
-        _enemiesActive.Add(enemy);
+        _activeEnemies.Remove(enemy);
     }
 
     public void AddEnemy(Enemy enemy)
     {
-        _enemiesActive.Add(enemy);
+        _activeEnemies.Add(enemy);
     }
 
     // Update is called once per frame

@@ -72,6 +72,7 @@ GameObject:
   - component: {fileID: 4723193655262754}
   - component: {fileID: 208690331109573700}
   - component: {fileID: 95918100118578538}
+  - component: {fileID: 114931011815801826}
   m_Layer: 0
   m_Name: Tower_Cannon
   m_TagString: Untagged
@@ -233,6 +234,17 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114931011815801826
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1914277414908904}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dfba9df985cf0a3449124837bb49ebc3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!198 &198153661362458212
 ParticleSystem:
   m_ObjectHideFlags: 1
