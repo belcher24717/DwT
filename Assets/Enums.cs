@@ -2,22 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enums {
 
-    public enum ArmorType
-    {
-        none,
-        light,
-        medium,
-        heavy
-    }
-
-    public enum AttackType
-    {
-        shrapnel,
-        piercing,
-        highImpact,
-        explosive
-    }
-
+public enum ArmorType
+{
+    None,
+    Light,
+    Medium,
+    Heavy
 }
+
+public enum AttackType
+{
+    Shrapnel,
+    Piercing,
+    HighImpact,
+    Explosive
+}
+
+

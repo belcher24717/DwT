@@ -3,34 +3,31 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using UnityEngine;
 
-public class CannonScript : Tower {
-
-
-
-	// Use this for initialization
-	void Start () {
+public class CannonScript : Tower
+{
+    // Use this for initialization
+    void Start()
+    {
         _range = 30;
         _damage = 10;
-        _fireRate = .5; // attacks per second
-        //_attackType = Enums.AttackType.
-	}
-	
-	// Update is called once per frame
-	void Update () {
-        _targetedEnemy = PickEnemy();
-        if (_targetedEnemy != null)
-            Attack(_targetedEnemy.GetComponent<Enemy>());
-	}
-
-    public override void Attack(Enemy enemy)
-    {
-        // gotta attack dat enemy!
+                        //_attackType = Enums.AttackType.
     }
 
-    public override GameObject PickEnemy()
+    // Update is called once per frame
+    void Update()
+    {
+        base.Update();
+    }
+
+    public override void Attack()
+    {
+        gameObject.GetComponent<Animator>().Play("Shoot");
+    }
+
+    public override Enemy PickEnemy()
     {
         float distanceToEnemy = _range + 1;
-        GameObject enemyToFace = null;
+        Enemy enemyToFace = null;
 
         ReadOnlyCollection<Enemy> activeEnemies = EnemyController.Instance.ActiveEnemies;
 
@@ -42,12 +39,11 @@ public class CannonScript : Tower {
                 if (distance <= _range)
                 {
                     distanceToEnemy = (distance < distanceToEnemy) ? distance : distanceToEnemy;
-                    enemyToFace = enemy.gameObject;
+                    enemyToFace = enemy;
                 }
             }
         }
 
         return enemyToFace;
     }
-
 }

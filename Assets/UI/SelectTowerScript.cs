@@ -8,6 +8,9 @@ public class SelectTowerScript : ClickSpawnScript
     /// The Tower that will spawn on click
     /// </summary>
     public GameObject Tower;
+    /// <summary>
+    /// The Tower to use as the Cursor for building
+    /// </summary>
     public GameObject CursorTower;
 
     private bool _selected;

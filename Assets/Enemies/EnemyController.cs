@@ -29,7 +29,8 @@ public class EnemyController : MonoBehaviour
 
     public void AddEnemy(Enemy enemy)
     {
-        _activeEnemies.Add(enemy);
+        if(enemy != null)
+            _activeEnemies.Add(enemy);
     }
 
     // Update is called once per frame

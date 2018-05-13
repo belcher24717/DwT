@@ -2,13 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Enemy : MonoBehaviour
+public class Enemy : MonoBehaviour
 {
-
     protected int _health;
     protected int _speed;
     protected int _armorValue;
-    protected int _armorType;
+    protected ArmorType[] _armorType;
+
+    public void Damage(int value)
+    {
+
+    }
 
     // Use this for initialization
     void Start()

@@ -99,7 +99,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1022362578094124}
-  m_LocalRotation: {x: -0.65727544, y: -0.26074716, z: 0.65727544, w: 0.26074716}
+  m_LocalRotation: {x: -0.6572754, y: -0.26074713, z: 0.6572754, w: 0.26074713}
   m_LocalPosition: {x: 0, y: 0.423, z: -0.543}
   m_LocalScale: {x: 2.5, y: 2.5, z: 2.5}
   m_Children: []
@@ -126,7 +126,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1914277414908904}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 33.667126, y: 9.5806375e-17, z: 3.426323}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4657013521679384}
@@ -242,9 +242,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1914277414908904}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dfba9df985cf0a3449124837bb49ebc3, type: 3}
+  m_Script: {fileID: 11500000, guid: 0e9373f12e0f11e4aa4d8ae82109e8f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  FireRate: 1
+  ShotEffects:
+  - {fileID: 198153661362458212}
+  TurretSwivel: {fileID: 1538846587316864}
+  TurnSpeed: 1
 --- !u!198 &198153661362458212
 ParticleSystem:
   m_ObjectHideFlags: 1
@@ -305,14 +310,14 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 0
-  randomSeed: 2111828647
+  randomSeed: -963315791
   InitialModule:
     serializedVersion: 3
     enabled: 1
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.05
+      scalar: 0.1
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -2801,7 +2806,7 @@ ParticleSystem:
     intensityCurve:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1
+      scalar: 4
       minScalar: 1
       maxCurve:
         serializedVersion: 2
