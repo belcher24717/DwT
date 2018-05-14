@@ -13,7 +13,7 @@ Prefab:
   m_IsPrefabParent: 1
 --- !u!1 &1022362578094124
 GameObject:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
@@ -99,12 +99,12 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1022362578094124}
-  m_LocalRotation: {x: -0.65727544, y: -0.26074716, z: 0.65727544, w: 0.26074716}
-  m_LocalPosition: {x: 0, y: 0.423, z: -0.543}
-  m_LocalScale: {x: 2.5, y: 2.5, z: 2.5}
+  m_LocalRotation: {x: -0.2803878, y: -0.64914, z: 0.2803878, w: 0.64914}
+  m_LocalPosition: {x: 0, y: 0.54299927, z: 0.41030014}
+  m_LocalScale: {x: 2.500002, y: 2.5000029, z: 2.5000021}
   m_Children: []
-  m_Father: {fileID: 4723193655262754}
-  m_RootOrder: 2
+  m_Father: {fileID: 4657013521679384}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: -90.00001, z: 136.723}
 --- !u!4 &4657013521679384
 Transform:
@@ -115,7 +115,8 @@ Transform:
   m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
   m_LocalPosition: {x: -0, y: 0.0127, z: 2.8199664e-18}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 4235975240159520}
   m_Father: {fileID: 4723193655262754}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -131,7 +132,6 @@ Transform:
   m_Children:
   - {fileID: 4657013521679384}
   - {fileID: 4047875192371200}
-  - {fileID: 4235975240159520}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -229,7 +229,7 @@ Animator:
   m_Controller: {fileID: 9100000, guid: 3b1cdffa7d0256f438376f7094bcc516, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
-  m_ApplyRootMotion: 0
+  m_ApplyRootMotion: 1
   m_LinearVelocityBlending: 0
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
@@ -313,7 +313,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 0
-  randomSeed: -963315791
+  randomSeed: -2000603412
   InitialModule:
     serializedVersion: 3
     enabled: 1

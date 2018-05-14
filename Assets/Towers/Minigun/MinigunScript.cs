@@ -20,7 +20,7 @@ public class MinigunScript : Tower
     {
         Enemy pick = PickEnemyFactory.PickClosestEnemy(Range, transform.position);
 
-        if(pick == null && Spinning())
+        if((pick == null || !pick.isActiveAndEnabled) && Spinning())
             Animator.Play("Spin Down");
 
         return pick;

@@ -5,15 +5,16 @@ using UnityEngine;
 
 public class ClickSpawnScript : MonoBehaviour
 {
-    private RaycastHit hit;                             // The Ray from camera to point-of-click
     [SerializeField]
     private Grid grid;                                  // The grid for placing towers
-               // the tower that follows the cursor
+    private RaycastHit hit;                             // The Ray from camera to point-of-click
     private GameObject placedCursorTower;               // a reference to the cursor tower that's actually placed
-    protected bool gridPositionChanged;                 // true if the cursor has changed grid positions
     private ArrayList placedTowers = new ArrayList();   // A list of all placed towers
-
     private static List<SelectTowerScript> _towers;     // a static list of all selectable towers (UI)
+
+    protected bool gridPositionChanged;                 // true if the cursor has changed grid positions
+
+    public Transform SpawnParent;
 
     private static GameObject selectedTower;            // a static reference to the currently selected tower
     public static GameObject SelectedTower              // property
@@ -118,7 +119,7 @@ public class ClickSpawnScript : MonoBehaviour
         if (placedCursorTower != null)
             GameObject.Destroy(placedCursorTower);
 
-        GameObject placedTower = Instantiate(towerToUse, GridPosition, Quaternion.identity);
+        GameObject placedTower = Instantiate(towerToUse, GridPosition, Quaternion.identity, SpawnParent);
         if (!placeCursorTower)  // place actual tower
             placedTowers.Add(placedTower);
         else                    // else place cursor tower 

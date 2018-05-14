@@ -25,7 +25,7 @@ public abstract class Tower : MonoBehaviour
 
     public void FaceEnemy()
     {
-        if (TurretSwivel == null || _targetedEnemy == null)
+        if (TurretSwivel == null || _targetedEnemy == null || !_targetedEnemy.isActiveAndEnabled)
         {
             _canAttack = false;
             return;
@@ -34,10 +34,10 @@ public abstract class Tower : MonoBehaviour
         var lookPos =  transform.position - _targetedEnemy.transform.position;
         lookPos.y = 0;
 
-        var rotation = Quaternion.LookRotation(lookPos);
-        transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * TurnSpeed);
+        var rotation = Quaternion.LookRotation(lookPos) * Quaternion.Euler(-90, 0, 0);
+        TurretSwivel.transform.rotation = Quaternion.Slerp(TurretSwivel.transform.rotation, rotation, Time.deltaTime * TurnSpeed);
 
-        _canAttack = Quaternion.Angle(transform.rotation, rotation) < 30 && _lastAttack.AddSeconds(FireRate) < DateTime.Now;
+        _canAttack = Quaternion.Angle(TurretSwivel.transform.rotation, rotation) < 30 && _lastAttack.AddSeconds(FireRate) < DateTime.Now;
     }
 
     private void TowerAttack()
@@ -72,7 +72,7 @@ public abstract class Tower : MonoBehaviour
     // Update is called once per frame
     protected void Update()
     {
-        if (_targetedEnemy == null || !TargetEnemyInRange())
+        if (_targetedEnemy == null || !_targetedEnemy.isActiveAndEnabled || !TargetEnemyInRange())
             _targetedEnemy = PickEnemy();
         else
         {

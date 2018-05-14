@@ -8,6 +8,9 @@ public class Enemy : MonoBehaviour
     protected int _speed;
     protected int _armorValue;
     protected ArmorType[] _armorType;
+    protected int _slowResistance;
+    protected int _goldValue;
+    protected int _damage;
 
     public void Damage(int value)
     {
@@ -25,4 +28,20 @@ public class Enemy : MonoBehaviour
     {
 
     }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Crystal")
+        {
+            //apply damage to crystal...
+            // theCrystal.Damage(_damage);
+            this.gameObject.SetActive(false);
+        }
+    }
+
+    void OnDisable()
+    {
+        EnemyController.Instance.RemoveEnemy(this);
+    }
+
 }

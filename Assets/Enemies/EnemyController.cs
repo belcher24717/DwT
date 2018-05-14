@@ -22,7 +22,7 @@ public class EnemyController : MonoBehaviour
             GameObject.Destroy(this);
     }
 
-    private void RemoveEnemy(Enemy enemy)
+    public void RemoveEnemy(Enemy enemy)
     {
         _activeEnemies.Remove(enemy);
     }

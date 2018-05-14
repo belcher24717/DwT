@@ -17,7 +17,11 @@ public static class PickEnemyFactory
         {
             foreach (Enemy enemy in activeEnemies)
             {
-                float distance = Vector3.Distance(enemy.gameObject.transform.position, position);
+                Vector3? enemyPosition = enemy?.gameObject?.transform?.position;
+                if (!enemyPosition.HasValue)
+                    continue;
+
+                float distance = Vector3.Distance(enemyPosition.Value, position);
                 if (distance <= range)
                 {
                     distanceToEnemy = (distance < distanceToEnemy) ? distance : distanceToEnemy;
