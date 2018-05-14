@@ -49,8 +49,9 @@ public abstract class Tower : MonoBehaviour
         if (Attack())
         {
             //we're going to attack now
-            foreach (ParticleSystem p in ShotEffects)
-                p.Play();
+            if(ShotEffects != null)
+                foreach (ParticleSystem p in ShotEffects)
+                    p?.Play();
 
             _lastAttack = DateTime.Now;
         }
