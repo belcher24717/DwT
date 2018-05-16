@@ -11,14 +11,12 @@ public class MinigunScript : Tower
             Animator.Play("Spin Up");
 
         if (Animator.GetCurrentAnimatorStateInfo(0).IsName("Spin"))
+        {
+            _targetedEnemy.TakeDamage(Damage, AttackType);
             return true;
+        }
 
         return false;
-    }
-
-    public override void PerformAttack()
-    {
-        _targetedEnemy.TakeDamage(Damage, _attackType);
     }
 
     public override Enemy PickEnemy()

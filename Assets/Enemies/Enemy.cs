@@ -1,11 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class Enemy : MonoBehaviour
 {
     public int Health;
-    public int Speed;
+    public float Speed;
     public ArmorType ArmorType;
     public int SlowResistance;
     public int GoldValue;
@@ -34,7 +35,7 @@ public class Enemy : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-
+        GetComponent<NavMeshAgent>().speed = Speed;
     }
 
     // Update is called once per frame

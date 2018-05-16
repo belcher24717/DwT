@@ -323,8 +323,10 @@ MonoBehaviour:
   Animator: {fileID: 95959758259778496}
   TurnSpeed: 200
   FireRate: 1
-  Range: 30
-  Damage: 0
+  Range: 10
+  Damage: 10
+  Shell: {fileID: 114049908174496910, guid: 1659499941e3457498866f07d75a3f2d, type: 2}
+  ShellSpawnLocation: {fileID: 4491642617975568}
 --- !u!198 &198834786143562640
 ParticleSystem:
   m_ObjectHideFlags: 1
