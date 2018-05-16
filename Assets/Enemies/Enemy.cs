@@ -4,16 +4,30 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    protected int _health;
-    protected int _speed;
-    protected int _armorValue;
-    protected ArmorType[] _armorType;
-    protected int _slowResistance;
-    protected int _goldValue;
-    protected int _damage;
+    public int Health;
+    public int Speed;
+    public ArmorType ArmorType;
+    public int SlowResistance;
+    public int GoldValue;
+    public int Damage;
 
-    public void Damage(int value)
+    // may need damage and death information here (particle effects, animations, etc)...
+
+    public void TakeDamage(int damage, AttackType attack)
     {
+        int damageDealt = DamageCalculator.CalculateDamage(damage, ArmorType, attack);
+        if ((Health - damageDealt) > 0)
+        {
+            DamageEffect();
+            Health -= damageDealt;
+        }
+        else
+        {
+            Health = 0;
+            DeathEffect();
+            this.gameObject.SetActive(false);
+            Destroy(this, 10f);
+        }
 
     }
 
@@ -25,6 +39,17 @@ public class Enemy : MonoBehaviour
 
     // Update is called once per frame
     void Update()
+    {
+
+    }
+
+    // handles display of damage effects / particles
+    void DamageEffect()
+    {
+
+    }
+
+    void DeathEffect()
     {
 
     }

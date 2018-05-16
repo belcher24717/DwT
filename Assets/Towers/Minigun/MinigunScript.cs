@@ -16,6 +16,11 @@ public class MinigunScript : Tower
         return false;
     }
 
+    public override void PerformAttack()
+    {
+        _targetedEnemy.TakeDamage(Damage, _attackType);
+    }
+
     public override Enemy PickEnemy()
     {
         Enemy pick = PickEnemyFactory.PickClosestEnemy(Range, transform.position);

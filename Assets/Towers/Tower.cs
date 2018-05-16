@@ -6,7 +6,7 @@ using UnityEngine;
 public abstract class Tower : MonoBehaviour
 {
     
-    protected int _attackType;
+    protected AttackType _attackType;
     protected Enemy _targetedEnemy;
 
     public ParticleSystem[] ShotEffects;
@@ -21,6 +21,7 @@ public abstract class Tower : MonoBehaviour
     private DateTime _lastAttack;
 
     abstract public bool Attack();
+    abstract public void PerformAttack();
     abstract public Enemy PickEnemy();
 
     public void FaceEnemy()
@@ -54,6 +55,7 @@ public abstract class Tower : MonoBehaviour
                     p?.Play();
 
             _lastAttack = DateTime.Now;
+            PerformAttack();
         }
     }
 

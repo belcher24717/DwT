@@ -27,7 +27,7 @@ GameObject:
   - component: {fileID: 114305677178027484}
   - component: {fileID: 114015435329321194}
   m_Layer: 0
-  m_Name: Test
+  m_Name: Infamous Square
   m_TagString: Untagged
   m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -40,7 +40,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1911056296109644}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 22.706825, y: 6.981963e-17, z: 9.278019}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children: []
   m_Father: {fileID: 0}
@@ -125,6 +125,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8460383a0cf01a46a34dd0987be1768, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Health: 20
+  Speed: 5
+  ArmorType: 0
+  SlowResistance: 0
+  GoldValue: 5
+  Damage: 2
 --- !u!114 &114305677178027484
 MonoBehaviour:
   m_ObjectHideFlags: 1

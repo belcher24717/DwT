@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-
 public enum ArmorType
 {
     None,
@@ -16,7 +15,8 @@ public enum AttackType
     Shrapnel,
     Piercing,
     HighImpact,
-    Explosive
+    Explosive,
+    Chaos
 }
 
 

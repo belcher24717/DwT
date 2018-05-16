@@ -23,6 +23,11 @@ public class CannonScript : Tower
         return true;
     }
 
+    public override void PerformAttack()
+    {
+
+    }
+
     public override Enemy PickEnemy()
     {
         return PickEnemyFactory.PickClosestEnemy(Range, transform.position);

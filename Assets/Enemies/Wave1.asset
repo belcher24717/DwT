@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Name: Wave1
   m_EditorClassIdentifier: 
   NumberOfSpawns: 3
-  SpawnDelay: 0
+  SpawnDelay: 10
   SpawnTimer: 1
   EnemyPrefab: {fileID: 114015435329321194, guid: ebb422242620ff843aae8855c6c7fae5,
     type: 2}
