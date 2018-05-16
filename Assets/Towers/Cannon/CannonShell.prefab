@@ -114,7 +114,7 @@ MonoBehaviour:
   Damage: 0
   Target: {fileID: 0}
   Radius: 10
-  Explosion: {fileID: 198000012942003240, guid: ecdd96beb7f93494880c052dfccf9dc1,
+  Explosion: {fileID: 198000012942003240, guid: 6922d374491aee94da678b8c5df3741a,
     type: 2}
 --- !u!135 &135238123095239452
 SphereCollider:

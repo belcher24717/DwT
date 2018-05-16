@@ -27,7 +27,6 @@ public class Enemy : MonoBehaviour
             Health = 0;
             DeathEffect();
             this.gameObject.SetActive(false);
-            Destroy(this, 10f);
         }
 
     }
@@ -68,6 +67,7 @@ public class Enemy : MonoBehaviour
     void OnDisable()
     {
         EnemyController.Instance.RemoveEnemy(this);
+        Destroy(gameObject, 5f);
     }
 
 }
