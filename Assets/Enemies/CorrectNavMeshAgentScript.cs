@@ -28,7 +28,7 @@ public class CorrectNavMeshAgentScript : MonoBehaviour
 
     }
 
-    void OnTriggerEnter(Collider other)
+    void OnCollisionEnter(Collision collision)
     {
         if (!isDestinationSet && agent?.isOnNavMesh == true && Destination != null)
         {
