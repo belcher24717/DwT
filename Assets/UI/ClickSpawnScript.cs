@@ -9,7 +9,7 @@ public class ClickSpawnScript : MonoBehaviour
     private Grid grid;                                  // The grid for placing towers
     private RaycastHit hit;                             // The Ray from camera to point-of-click
     private GameObject placedCursorTower;               // a reference to the cursor tower that's actually placed
-    private ArrayList placedTowers = new ArrayList();   // A list of all placed towers
+    private List<GameObject> placedTowers = new List<GameObject>();   // A list of all placed towers
     private static List<SelectTowerScript> _towers;     // a static list of all selectable towers (UI)
 
     protected bool gridPositionChanged;                 // true if the cursor has changed grid positions
@@ -27,8 +27,8 @@ public class ClickSpawnScript : MonoBehaviour
         }
     }
 
-    private static GameObject cursorTower;            // a static reference to the currently selected tower
-    public static GameObject CursorTower              // property
+    private static TowerCursorScript cursorTower;            // a static reference to the currently selected tower
+    public static TowerCursorScript CursorTower              // property
     {
         get
         {
@@ -99,21 +99,16 @@ public class ClickSpawnScript : MonoBehaviour
 
     void PlaceTowerOnGrid (Vector3 buildPoint, bool placeCursorTower)
     {
-        GameObject towerToUse = placeCursorTower ? CursorTower : SelectedTower;
+        bool canPlace = true;
+        GameObject towerToUse = placeCursorTower ? CursorTower.gameObject : SelectedTower;
         if (towerToUse == null)
             return;
 
-        // if a tower already exists in this location, don't place it
-        if (!placeCursorTower)
-        {
-            foreach (GameObject tower in placedTowers)
-            {
-                if (GridPosition == tower.transform.position)
-                {
-                    return;
-                }
-            }
-        }
+        canPlace = !placedTowers.Any(t => t.transform.position == GridPosition);
+        
+        //if you can't place, and you aren't a cursor tower
+        if (!canPlace && !placeCursorTower)
+            return;
 
         // delete old placed cursor tower
         if (placedCursorTower != null)
@@ -123,6 +118,13 @@ public class ClickSpawnScript : MonoBehaviour
         if (!placeCursorTower)  // place actual tower
             placedTowers.Add(placedTower);
         else                    // else place cursor tower 
-            placedCursorTower = placedTower; 
+        {
+            placedCursorTower = placedTower;
+
+            if (canPlace)
+                placedCursorTower.GetComponent<TowerCursorScript>().CanPlace();
+            else
+                placedCursorTower.GetComponent<TowerCursorScript>().CanNotPlace();
+        }
     }
 }

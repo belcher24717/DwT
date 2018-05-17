@@ -11,7 +11,7 @@ public class SelectTowerScript : ClickSpawnScript
     /// <summary>
     /// The Tower to use as the Cursor for building
     /// </summary>
-    public GameObject CursorTower;
+    public TowerCursorScript CursorTower;
 
     private bool _selected;
     public bool Selected

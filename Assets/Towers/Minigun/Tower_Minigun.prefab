@@ -379,6 +379,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b59e1d408918ac34b9230a418afe2d3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AttackType: 0
   ShotEffects:
   - {fileID: 198094849683454464}
   - {fileID: 198452255901186502}
@@ -386,7 +387,7 @@ MonoBehaviour:
   Animator: {fileID: 95596544541132838}
   TurnSpeed: 200
   FireRate: 0.1
-  Range: 30
+  Range: 15
   Damage: 2
 --- !u!198 &198094849683454464
 ParticleSystem:

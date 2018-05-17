@@ -317,6 +317,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e9373f12e0f11e4aa4d8ae82109e8f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AttackType: 0
   ShotEffects:
   - {fileID: 198834786143562640}
   TurretSwivel: {fileID: 1469040124016044}

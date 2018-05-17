@@ -642,7 +642,7 @@ MonoBehaviour:
   grid: {fileID: 0}
   SpawnParent: {fileID: 1731813592}
   Tower: {fileID: 1113283568730968, guid: a7d520cd7d07c8144a4ef34c9c3f5a20, type: 2}
-  CursorTower: {fileID: 1884115408996198, guid: 3ef402eaf01dcdf43b5dc1da6b0cbd0e,
+  CursorTower: {fileID: 114975152517871384, guid: 3ef402eaf01dcdf43b5dc1da6b0cbd0e,
     type: 2}
 --- !u!23 &1089178843
 MeshRenderer:
@@ -735,7 +735,7 @@ MonoBehaviour:
   grid: {fileID: 0}
   SpawnParent: {fileID: 1731813592}
   Tower: {fileID: 1380916464320458, guid: aa4df9b18504b3f498a0c96cfe07d1d3, type: 2}
-  CursorTower: {fileID: 1321692596006436, guid: fc7cf1e198666734282e491ed1c36867,
+  CursorTower: {fileID: 114697701097846516, guid: fc7cf1e198666734282e491ed1c36867,
     type: 2}
 --- !u!23 &1134641925
 MeshRenderer:
@@ -912,7 +912,7 @@ Prefab:
         type: 2}
       propertyPath: CursorTower
       value: 
-      objectReference: {fileID: 1321692596006436, guid: fc7cf1e198666734282e491ed1c36867,
+      objectReference: {fileID: 114697701097846516, guid: fc7cf1e198666734282e491ed1c36867,
         type: 2}
     - target: {fileID: 114790865641998612, guid: e8f8b8aeb6f33d9459e97e22415d3afa,
         type: 2}
@@ -1224,7 +1224,7 @@ Prefab:
         type: 2}
       propertyPath: CursorTower
       value: 
-      objectReference: {fileID: 1884115408996198, guid: 3ef402eaf01dcdf43b5dc1da6b0cbd0e,
+      objectReference: {fileID: 114975152517871384, guid: 3ef402eaf01dcdf43b5dc1da6b0cbd0e,
         type: 2}
     - target: {fileID: 114790865641998612, guid: e8f8b8aeb6f33d9459e97e22415d3afa,
         type: 2}
