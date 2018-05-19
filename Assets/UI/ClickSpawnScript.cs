@@ -120,11 +120,7 @@ public class ClickSpawnScript : MonoBehaviour
         else                    // else place cursor tower 
         {
             placedCursorTower = placedTower;
-
-            if (canPlace)
-                placedCursorTower.GetComponent<TowerCursorScript>().CanPlace();
-            else
-                placedCursorTower.GetComponent<TowerCursorScript>().CanNotPlace();
+            placedCursorTower.GetComponent<TowerCursorScript>().CanPlace(canPlace);
         }
     }
 }

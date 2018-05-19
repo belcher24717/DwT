@@ -7,7 +7,7 @@ public abstract class Tower : MonoBehaviour
 {
     
     public AttackType AttackType;
-    protected Enemy _targetedEnemy;
+    protected List<Enemy> _targetedEnemies;
 
     public ParticleSystem[] ShotEffects;
     public GameObject TurretSwivel;
@@ -16,22 +16,24 @@ public abstract class Tower : MonoBehaviour
     public double FireRate = 1.0;
     public double Range = 30;
     public int Damage;
+    public bool CanTarget = true;
 
     private bool _canAttack;
     private DateTime _lastAttack;
 
     abstract public bool Attack();
-    abstract public Enemy PickEnemy();
+    abstract public List<Enemy> PickEnemies();
 
+    // can be overriden in multi-target situations 
     public void FaceEnemy()
     {
-        if (TurretSwivel == null || _targetedEnemy == null || !_targetedEnemy.isActiveAndEnabled)
+        if (TurretSwivel == null || _targetedEnemies.Count != 1 || _targetedEnemies[0] == null || !_targetedEnemies[0].isActiveAndEnabled)
         {
             _canAttack = false;
             return;
         }
 
-        var lookPos =  transform.position - _targetedEnemy.transform.position;
+        var lookPos =  transform.position - _targetedEnemies[0].transform.position;
         lookPos.y = 0;
 
         var rotation = Quaternion.LookRotation(lookPos) * Quaternion.Euler(-90, 0, 0);
@@ -57,15 +59,15 @@ public abstract class Tower : MonoBehaviour
         }
     }
 
-    private bool TargetEnemyInRange()
+    private bool TargetEnemyInRange(Enemy enemy)
     {
-        return Vector3.Distance(_targetedEnemy.gameObject.transform.position, transform.position) <= Range;
+        return Vector3.Distance(enemy.gameObject.transform.position, transform.position) <= Range;
     }
 
     // Use this for initialization
     void Start()
     {
-        _targetedEnemy = null;
+        _targetedEnemies = null;
         _canAttack = false;
         _lastAttack = DateTime.Now - TimeSpan.FromSeconds(FireRate);
     }
@@ -73,11 +75,19 @@ public abstract class Tower : MonoBehaviour
     // Update is called once per frame
     protected void Update()
     {
-        if (_targetedEnemy == null || !_targetedEnemy.isActiveAndEnabled || !TargetEnemyInRange())
-            _targetedEnemy = PickEnemy();
-        else
+        if (_targetedEnemies != null && _targetedEnemies.Count > 0)
         {
-            FaceEnemy();
+            foreach (Enemy enemy in _targetedEnemies)
+            {
+                if (enemy == null || !enemy.isActiveAndEnabled || !TargetEnemyInRange(enemy))
+                {
+                    _targetedEnemies = PickEnemies();
+                    return;
+                }
+            }
+            if (CanTarget)
+                FaceEnemy();
+
             TowerAttack();
         }
     }

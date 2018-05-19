@@ -23,14 +23,18 @@ public class CannonScript : Tower
     public override bool Attack()
     {
         CannonShellScript shell = Instantiate(Shell, ShellSpawnLocation.position, Quaternion.identity);
-        shell.Damage = Damage;
-        shell.Target = _targetedEnemy.transform;
+        if (_targetedEnemies.Count > 0)
+        {
+            shell.Damage = Damage;
+            shell.Target = _targetedEnemies[0]?.transform;
 
-        Animator.Play("Shoot");
+            Animator.Play("Shoot");
+        }
+
         return true;
     }
 
-    public override Enemy PickEnemy()
+    public override List<Enemy> PickEnemies()
     {
         return PickEnemyFactory.PickClosestEnemy(Range, transform.position);
     }

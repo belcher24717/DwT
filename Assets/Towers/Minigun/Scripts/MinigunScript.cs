@@ -12,21 +12,23 @@ public class MinigunScript : Tower
 
         if (Animator.GetCurrentAnimatorStateInfo(0).IsName("Spin"))
         {
-            _targetedEnemy.TakeDamage(Damage, AttackType);
+            if (_targetedEnemies.Count == 1)
+                _targetedEnemies[0]?.TakeDamage(Damage, AttackType);
             return true;
         }
 
         return false;
     }
 
-    public override Enemy PickEnemy()
+    public override List<Enemy> PickEnemies()
     {
-        Enemy pick = PickEnemyFactory.PickClosestEnemy(Range, transform.position);
+        List<Enemy> pickList = PickEnemyFactory.PickClosestEnemy(Range, transform.position);
+        Enemy pick = (pickList.Count == 1) ? pickList[0] : null;
 
         if((pick == null || !pick.isActiveAndEnabled) && Spinning())
             Animator.Play("Spin Down");
 
-        return pick;
+        return pickList;
     }
 
     private bool Spinning()

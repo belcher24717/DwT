@@ -57,17 +57,18 @@ public class TowerCursorScript : MonoBehaviour
 
         gameObject.GetComponent<MeshFilter>().mesh.CombineMeshes(combinedMeshes);
     }
-
-    public void CanNotPlace()
+    public void CanPlace(bool canPlace)
     {
-        gameObject.GetComponent<MeshRenderer>().material = BadPlacement;
-        line.material = BadPlacement;
-    }
-
-    public void CanPlace()
-    {
-        gameObject.GetComponent<MeshRenderer>().material = GoodPlacement;
-        line.material = GoodPlacement;
+        if (canPlace)
+        {
+            gameObject.GetComponent<MeshRenderer>().material = GoodPlacement;
+            line.material = GoodPlacement;
+        }
+        else
+        {
+            gameObject.GetComponent<MeshRenderer>().material = BadPlacement;
+            line.material = BadPlacement;
+        }
     }
 
 }
