@@ -35,7 +35,7 @@ public static class PickEnemyFactory
         return enemies;
     }
 
-    public static List<Enemy> PickAllEnemiesInRange(double range, Vector3 position)
+    public static List<Enemy> PickEnemiesInRange(double range, Vector3 position, int max = int.MaxValue)
     {
         float distanceToEnemy;
         List<Enemy> enemiesInRange = new List<Enemy>();
@@ -54,6 +54,9 @@ public static class PickEnemyFactory
                 if (distanceToEnemy <= range)
                 {
                     enemiesInRange.Add(enemy);
+
+                    if (enemiesInRange.Count >= max)
+                        break;
                 }
             }
         }

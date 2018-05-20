@@ -7,7 +7,7 @@ public class Wave : ScriptableObject
 {
     public int NumberOfSpawns;
     public int SpawnDelay;
-    public int SpawnTimer;
+    public float SpawnTimer;
     public Enemy EnemyPrefab;
 
     private int _tempNumOfSpawns;
