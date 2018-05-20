@@ -11,7 +11,7 @@ public class CannonScript : Tower
     // Use this for initialization
     void Start()
     {
-        //_attackType = Enums.AttackType.
+        base.Start();
     }
 
     // Update is called once per frame

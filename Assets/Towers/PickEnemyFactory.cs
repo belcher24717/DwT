@@ -14,24 +14,19 @@ public static class PickEnemyFactory
 
         ReadOnlyCollection<Enemy> activeEnemies = EnemyController.Instance.ActiveEnemies;
 
-        if (activeEnemies.Count > 0)
+        foreach (Enemy enemy in activeEnemies)
         {
-            foreach (Enemy enemy in activeEnemies)
-            {
-                Vector3? enemyPosition = enemy?.gameObject?.transform?.position;
-                if (!enemyPosition.HasValue)
-                    continue;
+            Vector3? enemyPosition = enemy?.gameObject?.transform?.position;
+            if (!enemyPosition.HasValue)
+                continue;
 
-                float distance = Vector3.Distance(enemyPosition.Value, position);
-                if (distance <= range)
+            float distance = Vector3.Distance(enemyPosition.Value, position);
+            if (distance <= range)
+            {
+                if (distance < distanceToEnemy)
                 {
-                    //distanceToEnemy = (distance < distanceToEnemy) ? distance : distanceToEnemy;
-                    //enemyToFace = enemy;
-                    if (distance < distanceToEnemy)
-                    {
-                        distanceToEnemy = distance;
-                        enemyToFace = enemy;
-                    }
+                    distanceToEnemy = distance;
+                    enemyToFace = enemy;
                 }
             }
         }

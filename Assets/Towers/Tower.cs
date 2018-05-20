@@ -16,9 +16,11 @@ public abstract class Tower : MonoBehaviour
     public double FireRate = 1.0;
     public double Range = 30;
     public int Damage;
-    public bool CanTarget = true;
+    public int MaxTargetEnemies = 1;
 
-    private bool _canAttack;
+    private bool CanTarget { get { return TurretSwivel != null; } }
+    private bool CanAttack { get { return _isFacingTarget && _lastAttack.AddSeconds(FireRate) < DateTime.Now; } }
+    private bool _isFacingTarget;
     private DateTime _lastAttack;
 
     abstract public bool Attack();
@@ -27,9 +29,12 @@ public abstract class Tower : MonoBehaviour
     // can be overriden in multi-target situations 
     public void FaceEnemy()
     {
-        if (TurretSwivel == null || _targetedEnemies.Count != 1 || _targetedEnemies[0] == null || !_targetedEnemies[0].isActiveAndEnabled)
+        if (!CanTarget)
+            return;
+
+        if (_targetedEnemies.Count < 1 || _targetedEnemies[0] == null || !_targetedEnemies[0].isActiveAndEnabled)
         {
-            _canAttack = false;
+            _isFacingTarget = false;
             return;
         }
 
@@ -39,12 +44,12 @@ public abstract class Tower : MonoBehaviour
         var rotation = Quaternion.LookRotation(lookPos) * Quaternion.Euler(-90, 0, 0);
         TurretSwivel.transform.rotation = Quaternion.Slerp(TurretSwivel.transform.rotation, rotation, Time.deltaTime * TurnSpeed);
 
-        _canAttack = Quaternion.Angle(TurretSwivel.transform.rotation, rotation) < 30 && _lastAttack.AddSeconds(FireRate) < DateTime.Now;
+        _isFacingTarget = Quaternion.Angle(TurretSwivel.transform.rotation, rotation) < 30;
     }
 
     private void TowerAttack()
     {
-        if (!_canAttack)
+        if (!_isFacingTarget || !CanAttack)
             return;
 
         //try to attack
@@ -65,30 +70,36 @@ public abstract class Tower : MonoBehaviour
     }
 
     // Use this for initialization
-    void Start()
+    protected void Start()
     {
-        _targetedEnemies = null;
-        _canAttack = false;
+        _targetedEnemies = new List<Enemy>();
+        _isFacingTarget = true;
         _lastAttack = DateTime.Now - TimeSpan.FromSeconds(FireRate);
     }
 
     // Update is called once per frame
     protected void Update()
     {
-        if (_targetedEnemies != null && _targetedEnemies.Count > 0)
+        if (_targetedEnemies.Count < MaxTargetEnemies)
+            _targetedEnemies = PickEnemies();
+        else
         {
-            foreach (Enemy enemy in _targetedEnemies)
+            for (int i = 0; i < _targetedEnemies.Count; i++)
             {
+                Enemy enemy = _targetedEnemies[i];
+
                 if (enemy == null || !enemy.isActiveAndEnabled || !TargetEnemyInRange(enemy))
                 {
                     _targetedEnemies = PickEnemies();
-                    return;
+                    break;
                 }
             }
-            if (CanTarget)
-                FaceEnemy();
-
-            TowerAttack();
         }
+
+        if (CanTarget)
+            FaceEnemy();
+
+        if (_targetedEnemies.Count > 0)
+            TowerAttack();
     }
 }
