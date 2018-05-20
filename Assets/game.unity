@@ -160,6 +160,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   grid: {fileID: 0}
   SpawnParent: {fileID: 1731813592}
+  Spawners: []
+  Destination: {fileID: 0}
   Tower: {fileID: 1864572668193234, guid: 84475c6115a71df4c9ce869fde9b4c50, type: 2}
   CursorTower: {fileID: 114637733103000650, guid: 30ed1a54aa9c4c74191cc523cf965ff8,
     type: 2}
@@ -462,6 +464,7 @@ GameObject:
   - component: {fileID: 154210625}
   - component: {fileID: 154210624}
   - component: {fileID: 154210623}
+  - component: {fileID: 154210626}
   m_Layer: 0
   m_Name: Spawner (1)
   m_TagString: Untagged
@@ -540,6 +543,27 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 154210621}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!195 &154210626
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 154210621}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 1
+  m_BaseOffset: 0.5
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!1 &241559980
 GameObject:
   m_ObjectHideFlags: 0
@@ -939,6 +963,7 @@ GameObject:
   - component: {fileID: 1068792511}
   - component: {fileID: 1068792509}
   - component: {fileID: 1068792510}
+  - component: {fileID: 1068792513}
   m_Layer: 0
   m_Name: Spawner
   m_TagString: Untagged
@@ -1017,6 +1042,27 @@ Transform:
   m_Father: {fileID: 78128949}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!195 &1068792513
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1068792508}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 1
+  m_BaseOffset: 0.5
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!1 &1089178841
 GameObject:
   m_ObjectHideFlags: 0
@@ -1051,6 +1097,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   grid: {fileID: 0}
   SpawnParent: {fileID: 1731813592}
+  Spawners: []
+  Destination: {fileID: 0}
   Tower: {fileID: 1113283568730968, guid: a7d520cd7d07c8144a4ef34c9c3f5a20, type: 2}
   CursorTower: {fileID: 114975152517871384, guid: 3ef402eaf01dcdf43b5dc1da6b0cbd0e,
     type: 2}
@@ -1144,6 +1192,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   grid: {fileID: 0}
   SpawnParent: {fileID: 1731813592}
+  Spawners: []
+  Destination: {fileID: 0}
   Tower: {fileID: 1380916464320458, guid: aa4df9b18504b3f498a0c96cfe07d1d3, type: 2}
   CursorTower: {fileID: 114697701097846516, guid: fc7cf1e198666734282e491ed1c36867,
     type: 2}
@@ -1232,6 +1282,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   grid: {fileID: 2031365544}
   SpawnParent: {fileID: 1731813592}
+  Spawners:
+  - {fileID: 1068792510}
+  - {fileID: 154210623}
+  - {fileID: 1218578501}
+  Destination: {fileID: 1687202415}
 --- !u!4 &1144292130
 Transform:
   m_ObjectHideFlags: 0
@@ -1317,6 +1372,7 @@ GameObject:
   - component: {fileID: 1218578503}
   - component: {fileID: 1218578502}
   - component: {fileID: 1218578501}
+  - component: {fileID: 1218578504}
   m_Layer: 0
   m_Name: Spawner (2)
   m_TagString: Untagged
@@ -1395,6 +1451,27 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1218578499}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!195 &1218578504
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1218578499}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 1
+  m_BaseOffset: 0.5
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!1001 &1252637149
 Prefab:
   m_ObjectHideFlags: 0

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class ClickSpawnScript : MonoBehaviour
 {
@@ -15,6 +16,8 @@ public class ClickSpawnScript : MonoBehaviour
     protected bool gridPositionChanged;                 // true if the cursor has changed grid positions
 
     public Transform SpawnParent;
+    public List<EnemySpawner> Spawners = new List<EnemySpawner>();
+    public GameObject Destination;
 
     private static GameObject selectedTower;            // a static reference to the currently selected tower
     public static GameObject SelectedTower              // property
@@ -27,8 +30,8 @@ public class ClickSpawnScript : MonoBehaviour
         }
     }
 
-    private static TowerCursorScript cursorTower;            // a static reference to the currently selected tower
-    public static TowerCursorScript CursorTower              // property
+    private static TowerCursorScript cursorTower;       // a static reference to the currently selected tower
+    public static TowerCursorScript CursorTower         // property
     {
         get
         {
@@ -97,6 +100,19 @@ public class ClickSpawnScript : MonoBehaviour
         cursorTower = null;
     }
 
+    private bool PathExists()
+    {
+        NavMeshPath path = new NavMeshPath();
+        foreach (EnemySpawner spawner in Spawners)
+        {
+
+            spawner?.GetComponent<NavMeshAgent>().CalculatePath(Destination.transform.position, path);
+            if (path.status == NavMeshPathStatus.PathInvalid || path.status == NavMeshPathStatus.PathPartial)
+                return false;
+        }
+        return true;
+    }
+
     void PlaceTowerOnGrid (Vector3 buildPoint, bool placeCursorTower)
     {
         bool canPlace = true;
@@ -105,7 +121,12 @@ public class ClickSpawnScript : MonoBehaviour
             return;
 
         canPlace = !placedTowers.Any(t => t.transform.position == GridPosition);
-        
+        if (canPlace)
+        {
+            if (!PathExists())
+                canPlace = false;
+        }
+
         //if you can't place, and you aren't a cursor tower
         if (!canPlace && !placeCursorTower)
             return;

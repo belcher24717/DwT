@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 114697701097846516}
   - component: {fileID: 33912442696317570}
   - component: {fileID: 23248262447661390}
+  - component: {fileID: 208667477850638756}
   m_Layer: 2
   m_Name: Tower_Minigun_Cursor
   m_TagString: Untagged
@@ -185,3 +186,18 @@ LineRenderer:
     generateLightingData: 1
   m_UseWorldSpace: 1
   m_Loop: 1
+--- !u!208 &208667477850638756
+NavMeshObstacle:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1321692596006436}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.4, y: 0.5, z: 0.4}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 0
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
