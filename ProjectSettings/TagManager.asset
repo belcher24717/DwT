@@ -6,6 +6,7 @@ TagManager:
   tags:
   - CursorOk
   - Crystal
+  - Floor
   layers:
   - Default
   - TransparentFX

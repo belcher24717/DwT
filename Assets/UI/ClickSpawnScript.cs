@@ -68,7 +68,7 @@ public class ClickSpawnScript : MonoBehaviour
         bool rayHit = Physics.Raycast(ray, out hit);
 
         // only place towers on floor
-        if (rayHit && hit.transform.name == "Floor")
+        if (rayHit && hit.transform.tag == "Floor")
         {
             GridPosition = grid.GetNearestPointOnGrid(hit.point);
 
