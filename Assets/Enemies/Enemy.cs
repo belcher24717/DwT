@@ -2,29 +2,34 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
 
 public class Enemy : MonoBehaviour
 {
     public int Health;
+    private int _currentHealth;
     public float Speed;
     public ArmorType ArmorType;
     public int SlowResistance;
     public int GoldValue;
     public int Damage;
+    public Image HeathBar;
 
     // may need damage and death information here (particle effects, animations, etc)...
 
     public void TakeDamage(int damage, AttackType attack)
     {
         int damageDealt = DamageCalculator.CalculateDamage(damage, ArmorType, attack);
-        if ((Health - damageDealt) > 0)
+        if ((_currentHealth - damageDealt) > 0)
         {
             DamageEffect();
-            Health -= damageDealt;
+            _currentHealth -= damageDealt;
+            HeathBar.fillAmount = _currentHealth / (float)Health;
         }
         else
         {
-            Health = 0;
+            _currentHealth = 0;
+            HeathBar.fillAmount = 0;
             DeathEffect();
             this.gameObject.SetActive(false);
         }
@@ -35,6 +40,7 @@ public class Enemy : MonoBehaviour
     void Start()
     {
         GetComponent<NavMeshAgent>().speed = Speed;
+        _currentHealth = Health;
     }
 
     // Update is called once per frame
