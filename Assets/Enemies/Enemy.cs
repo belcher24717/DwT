@@ -13,23 +13,23 @@ public class Enemy : MonoBehaviour
     public int SlowResistance;
     public int GoldValue;
     public int Damage;
-    public Image HeathBar;
+    public Image HealthBar;
 
     // may need damage and death information here (particle effects, animations, etc)...
 
     public void TakeDamage(int damage, AttackType attack)
     {
         int damageDealt = DamageCalculator.CalculateDamage(damage, ArmorType, attack);
+        DamageEffect();
         if ((_currentHealth - damageDealt) > 0)
         {
-            DamageEffect();
             _currentHealth -= damageDealt;
-            HeathBar.fillAmount = _currentHealth / (float)Health;
+            HealthBar.fillAmount = _currentHealth / (float)Health;
         }
         else
         {
             _currentHealth = 0;
-            HeathBar.fillAmount = 0;
+            HealthBar.fillAmount = 0;
             DeathEffect();
             this.gameObject.SetActive(false);
         }
@@ -65,7 +65,7 @@ public class Enemy : MonoBehaviour
         if (other.tag == "Crystal")
         {
             //apply damage to crystal...
-            // theCrystal.Damage(_damage);
+            other.GetComponent<CrystalScript>().TakeDamage(Damage);
             this.gameObject.SetActive(false);
         }
     }
