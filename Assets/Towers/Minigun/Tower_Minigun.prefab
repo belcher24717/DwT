@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4493407232145158}
   - component: {fileID: 198346209281199978}
   - component: {fileID: 199850471815031186}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Puff
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -39,7 +39,7 @@ GameObject:
   - component: {fileID: 95596544541132838}
   - component: {fileID: 208953650977940522}
   - component: {fileID: 114854236119017050}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Tower_Minigun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -56,7 +56,7 @@ GameObject:
   - component: {fileID: 4493172788824352}
   - component: {fileID: 198094849683454464}
   - component: {fileID: 199540495793465234}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: MuzzleFlashEffect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -73,7 +73,7 @@ GameObject:
   - component: {fileID: 4847763132417550}
   - component: {fileID: 33073666477571672}
   - component: {fileID: 23515162551676098}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Cone001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -90,7 +90,7 @@ GameObject:
   - component: {fileID: 4595888470252448}
   - component: {fileID: 198452255901186502}
   - component: {fileID: 199122663719796760}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: CartridgeEjectEffect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -107,7 +107,7 @@ GameObject:
   - component: {fileID: 4479391931068514}
   - component: {fileID: 33433039982171440}
   - component: {fileID: 23807867455928860}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Cylinder009
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -124,7 +124,7 @@ GameObject:
   - component: {fileID: 4491628705260694}
   - component: {fileID: 33837458879020996}
   - component: {fileID: 23497864809616614}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Box002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -389,6 +389,7 @@ MonoBehaviour:
   FireRate: 0.1
   Range: 15
   Damage: 2
+  MaxTargetEnemies: 1
 --- !u!198 &198094849683454464
 ParticleSystem:
   m_ObjectHideFlags: 1

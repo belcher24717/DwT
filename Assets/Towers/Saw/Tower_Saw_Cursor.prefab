@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 23344999614879506}
   - component: {fileID: 33606560515320786}
   - component: {fileID: 208499885044269726}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Tower_Saw_Cursor
   m_TagString: Untagged
   m_Icon: {fileID: 0}

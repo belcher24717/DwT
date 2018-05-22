@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 95959758259778496}
   - component: {fileID: 208693183362692250}
   - component: {fileID: 114841581391086974}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Tower_Cannon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -39,7 +39,7 @@ GameObject:
   - component: {fileID: 4687729707093172}
   - component: {fileID: 33442390142368864}
   - component: {fileID: 23801989511566992}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Sphere001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -56,7 +56,7 @@ GameObject:
   - component: {fileID: 4706069103917372}
   - component: {fileID: 33941082828488106}
   - component: {fileID: 23895909251441452}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Box001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -73,7 +73,7 @@ GameObject:
   - component: {fileID: 4491642617975568}
   - component: {fileID: 198834786143562640}
   - component: {fileID: 199544231123498568}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: MuzzleFlashEffect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -90,7 +90,7 @@ GameObject:
   - component: {fileID: 4261071202818556}
   - component: {fileID: 33262604044042798}
   - component: {fileID: 23677161873468322}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Cylinder001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -326,6 +326,7 @@ MonoBehaviour:
   FireRate: 1
   Range: 10
   Damage: 10
+  MaxTargetEnemies: 1
   Shell: {fileID: 114049908174496910, guid: 1659499941e3457498866f07d75a3f2d, type: 2}
   ShellSpawnLocation: {fileID: 4491642617975568}
 --- !u!198 &198834786143562640

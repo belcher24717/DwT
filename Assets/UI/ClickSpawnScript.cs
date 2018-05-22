@@ -76,7 +76,7 @@ public class ClickSpawnScript : MonoBehaviour
             GridPosition = grid.GetNearestPointOnGrid(hit.point);
 
             // if girdPosition changed, place new cursorTower and cleanup old
-            if (gridPositionChanged && SelectedTower != null)
+            if (gridPositionChanged && SelectedTower != null && !Input.GetMouseButton(0))
             {
                 gridPositionChanged = false;
                 PlaceTowerOnGrid(hit.point, true);
@@ -89,7 +89,7 @@ public class ClickSpawnScript : MonoBehaviour
         else
         {
             if (placedCursorTower != null)
-                GameObject.Destroy(placedCursorTower);
+                DestroyPlacedCursorTower();
             gridPositionChanged = true;
         }
 	}
@@ -120,28 +120,42 @@ public class ClickSpawnScript : MonoBehaviour
         if (CursorTower == null)
             return;
 
+        // delete old placed cursor tower
+        if (placedCursorTower != null)
+            DestroyPlacedCursorTower();
+
+        //always place cursor tower first, so it can be used to know if there is a path
+        placedCursorTower = Instantiate(CursorTower.gameObject, GridPosition, Quaternion.identity, SpawnParent);
+        placedCursorTower?.GetComponent<TowerCursorScript>()?.CanPlace(canPlace && !placeCursorTower);
+
         //if you can't place, and you aren't a cursor tower
         if (!canPlace && !placeCursorTower)
             return;
 
-        // delete old placed cursor tower
-        if (placedCursorTower != null)
-            GameObject.Destroy(placedCursorTower);
+        StartCoroutine(FinishPlaceTowerOnGrid(canPlace, placeCursorTower));
+    }
 
-        //always place cursor tower first, so it can be used to know if there is a path
-        placedCursorTower = Instantiate(CursorTower.gameObject, GridPosition, Quaternion.identity, SpawnParent);
-        placedCursorTower?.GetComponent<TowerCursorScript>().CanPlace(false);
-        
+    private IEnumerator FinishPlaceTowerOnGrid(bool canPlace, bool placeCursorTower)
+    {
+        //wait for 1 frame
+        yield return 0;
+
         //if we can still place at this point check the path
         if (canPlace)
             canPlace = PathExists();
 
-        if (!placeCursorTower && canPlace) // place actual tower
+        if (!placeCursorTower && canPlace)   // place actual tower
         {
             placedTowers.Add(Instantiate(SelectedTower, GridPosition, Quaternion.identity, SpawnParent));
-            GameObject.Destroy(placedCursorTower);
+            DestroyPlacedCursorTower();
         }
-        else if (placeCursorTower)           // else place cursor tower 
-            placedCursorTower?.GetComponent<TowerCursorScript>().CanPlace(canPlace);
+        else if (placeCursorTower)// else place cursor tower 
+            placedCursorTower?.GetComponent<TowerCursorScript>()?.CanPlace(canPlace);
+    }
+
+    private void DestroyPlacedCursorTower()
+    {
+        GameObject.Destroy(placedCursorTower);
+        placedCursorTower = null;
     }
 }

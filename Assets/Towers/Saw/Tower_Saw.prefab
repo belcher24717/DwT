@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4284261407091894}
   - component: {fileID: 33044995068882130}
   - component: {fileID: 23347624928814992}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Cylinder002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38,7 +38,7 @@ GameObject:
   - component: {fileID: 4073857644040718}
   - component: {fileID: 33714471828875066}
   - component: {fileID: 23745163875757212}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Cylinder005
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -55,7 +55,7 @@ GameObject:
   - component: {fileID: 4929436915956156}
   - component: {fileID: 198128788239267490}
   - component: {fileID: 199956270689326786}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: SparksEffect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -72,7 +72,7 @@ GameObject:
   - component: {fileID: 4420250850148066}
   - component: {fileID: 198621411784995174}
   - component: {fileID: 199387053546512560}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: SideSparksEffect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -89,7 +89,7 @@ GameObject:
   - component: {fileID: 4587054948609634}
   - component: {fileID: 33367791202161652}
   - component: {fileID: 23231886608423576}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Cylinder003
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -107,7 +107,7 @@ GameObject:
   - component: {fileID: 95408174282018884}
   - component: {fileID: 208063530918526540}
   - component: {fileID: 114845074483462444}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Tower_Saw
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -124,7 +124,7 @@ GameObject:
   - component: {fileID: 4926387059314178}
   - component: {fileID: 198200914564629834}
   - component: {fileID: 199098097219588206}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: SparksEffect2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -141,7 +141,7 @@ GameObject:
   - component: {fileID: 4007252652418966}
   - component: {fileID: 33086741468911160}
   - component: {fileID: 23464701837721914}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Cylinder004
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -158,7 +158,7 @@ GameObject:
   - component: {fileID: 4452565474512502}
   - component: {fileID: 198900881612775938}
   - component: {fileID: 199166295555463252}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: SparkDeathEffect
   m_TagString: Untagged
   m_Icon: {fileID: 0}

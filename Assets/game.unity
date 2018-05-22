@@ -386,7 +386,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 78128948}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -4.47, y: 0.55, z: 24.6}
+  m_LocalPosition: {x: -4.47, y: 0.51, z: 24.6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1068792512}
@@ -615,7 +615,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 241559980}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 26.419498, y: 2.709896, z: -13.8}
+  m_LocalPosition: {x: 26.419498, y: 2.709896, z: -13.779}
   m_LocalScale: {x: 1, y: 1, z: 31.422596}
   m_Children:
   - {fileID: 1217273199}
@@ -645,7 +645,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 297064079}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 1.403, y: 0.847, z: 0.01}
+  m_LocalPosition: {x: 1.403, y: 0.847, z: -0.058}
   m_LocalScale: {x: 0.03588891, y: 0.035888918, z: 0.035888918}
   m_Children: []
   m_Father: {fileID: 2031365547}
@@ -1031,7 +1031,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1068792508}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.731, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 78128949}
@@ -1057,7 +1057,7 @@ NavMeshAgent:
   m_Height: 1
   m_BaseOffset: 0.5
   m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
+  m_ObstacleAvoidanceType: 0
 --- !u!1 &1089178841
 GameObject:
   m_ObjectHideFlags: 0
@@ -1323,7 +1323,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1217273198}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 1.1765417}
+  m_LocalPosition: {x: 0, y: 0, z: 1.1751}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 241559984}
@@ -1382,7 +1382,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1218578499}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 12.9, y: 0, z: 29.05}
+  m_LocalPosition: {x: 12.9, y: 0.04, z: 29.05}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 78128949}
@@ -1574,7 +1574,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1320164194}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: -1.399, z: 0.01}
+  m_LocalPosition: {x: 0, y: -1.399, z: -0.061}
   m_LocalScale: {x: 0.035888724, y: 0.035888724, z: 0.035888735}
   m_Children: []
   m_Father: {fileID: 2031365547}
@@ -1757,7 +1757,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1392402303}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -0, y: 1.419, z: 0.01}
+  m_LocalPosition: {x: -0, y: 1.419, z: -0.0145}
   m_LocalScale: {x: 0.035888724, y: 0.035888724, z: 0.035888735}
   m_Children: []
   m_Father: {fileID: 2031365547}
@@ -2088,7 +2088,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1694703290}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -23.580502, y: 2.709896, z: 20.48}
+  m_LocalPosition: {x: -23.580502, y: 2.709896, z: 20.465}
   m_LocalScale: {x: 1, y: 1, z: 26.009827}
   m_Children:
   - {fileID: 1845700158}
@@ -2175,7 +2175,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1845700157}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -1.2133875}
+  m_LocalPosition: {x: 0, y: 0, z: -1.2117}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1694703293}
@@ -2231,7 +2231,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1903589391}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -1.416, y: 0.84699994, z: 0.01}
+  m_LocalPosition: {x: -1.416, y: 0.84699994, z: -0.041}
   m_LocalScale: {x: 0.035888724, y: 0.035888724, z: 0.035888735}
   m_Children: []
   m_Father: {fileID: 2031365547}
