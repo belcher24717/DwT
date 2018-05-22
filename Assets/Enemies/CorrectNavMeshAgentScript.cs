@@ -15,9 +15,11 @@ public class CorrectNavMeshAgentScript : MonoBehaviour
     public GameObject Destination;
 
     // Use this for initialization
-    void Start()
+    void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
+        agent.enabled = false;
+
         rigidBody = GetComponent<Rigidbody>();
         isDestinationSet = false;
     }
@@ -30,12 +32,16 @@ public class CorrectNavMeshAgentScript : MonoBehaviour
 
     void OnCollisionStay(Collision collision)
     {
-        if (!isDestinationSet && agent?.isOnNavMesh == true && Destination != null)
+        if (!isDestinationSet)
         {
-            isDestinationSet = true;
-            rigidBody.isKinematic = true;
-            rigidBody.useGravity = false;
-            agent.destination = Destination.transform.position;
+            agent.enabled = true;
+            if (agent?.isOnNavMesh == true && Destination != null)
+            {
+                isDestinationSet = true;
+                rigidBody.isKinematic = true;
+                rigidBody.useGravity = false;
+                agent.destination = Destination.transform.position;
+            }
         }
     }
 }

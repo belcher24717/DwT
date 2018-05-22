@@ -11,6 +11,8 @@ public class TowerCursorScript : MonoBehaviour
     public Material GoodPlacement;
     public Material BadPlacement;
 
+    public bool GoodPlace { get { return GetComponent<MeshRenderer>().material != BadPlacement; } }
+
     LineRenderer line;
 
     void Awake()
