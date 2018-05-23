@@ -153,7 +153,7 @@ public class ClickSpawnScript : MonoBehaviour
             canPlace = PathExists();
 
         //if we're placing a real tower, and the path was ok
-        if (!placeCursorTower && canPlace)
+        if (placedCursorTower?.transform.position == GridPosition && !placeCursorTower && canPlace)
         {
             placedTowers.Add(Instantiate(SelectedTower, GridPosition, Quaternion.identity, SpawnParent));
             DestroyPlacedCursorTower();

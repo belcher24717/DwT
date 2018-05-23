@@ -145,7 +145,7 @@ Transform:
   m_Children:
   - {fileID: 1644436430}
   m_Father: {fileID: 1144292130}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &25063627
 MonoBehaviour:
@@ -744,7 +744,7 @@ GameObject:
   - component: {fileID: 229839728}
   - component: {fileID: 229839727}
   m_Layer: 0
-  m_Name: Camera
+  m_Name: UI Camera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1753,7 +1753,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 974359856}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -0.04827118, y: 0.02999878, z: -1.6735356}
+  m_LocalPosition: {x: -0.048274994, y: 0.02999878, z: -1.6735356}
   m_LocalScale: {x: 0.026124818, y: 0.026124818, z: 0.026124818}
   m_Children:
   - {fileID: 769011158}
@@ -2265,8 +2265,8 @@ Transform:
   - {fileID: 1716306752}
   - {fileID: 1802634831}
   - {fileID: 49710772}
-  - {fileID: 1753539735}
   - {fileID: 25063626}
+  - {fileID: 1753539735}
   m_Father: {fileID: 229839730}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3496,7 +3496,7 @@ Transform:
   m_Children:
   - {fileID: 1093261441}
   m_Father: {fileID: 1144292130}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1753539736
 MonoBehaviour:
