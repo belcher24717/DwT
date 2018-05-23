@@ -83,7 +83,7 @@ public class ClickSpawnScript : MonoBehaviour
             }
 
             // if left mouse click, attempt to place tower
-            if (Input.GetMouseButton(0))
+            if (Input.GetMouseButtonDown(0))
                  PlaceTowerOnGrid(hit.point, false);
         }
         else

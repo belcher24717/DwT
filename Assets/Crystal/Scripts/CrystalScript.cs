@@ -8,6 +8,9 @@ public class CrystalScript : MonoBehaviour
     public int Health;
     private int _currentHealth;
     public Image HealthBar;
+    public ParticleSystem DamageParticle;
+
+
     // Use this for initialization
     void Start()
     {

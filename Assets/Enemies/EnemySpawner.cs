@@ -12,17 +12,23 @@ public class EnemySpawner : MonoBehaviour
     public GameObject Destination;
     public Wave[] Waves;
 
-	// Use this for initialization
-	void Start ()
+    // Use this for initialization
+    void Start()
     {
         currentWave = 0;
         spawnPoint = this.gameObject.transform.position;
-
         // repeatedly spawn enemies after 'spawnDelay' time every 'spawnTimer'.
+        //Waves[currentWave].Initialize();
+        //InvokeRepeating("SpawnEnemy", Waves[currentWave].SpawnDelay, Waves[currentWave].SpawnTimer);
+    }
+
+    public void StartWave()
+    {
         Waves[currentWave].Initialize();
         InvokeRepeating("SpawnEnemy", Waves[currentWave].SpawnDelay, Waves[currentWave].SpawnTimer);
-	}
-	
+        currentWave = currentWave + 1 % Waves.Length;
+    }
+
 	// Update is called once per frame
 	void Update ()
     {
