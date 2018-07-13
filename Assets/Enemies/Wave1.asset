@@ -14,5 +14,5 @@ MonoBehaviour:
   NumberOfSpawns: 100
   SpawnDelay: 0
   SpawnTimer: 0.1
-  EnemyPrefab: {fileID: 114015435329321194, guid: ebb422242620ff843aae8855c6c7fae5,
+  EnemyPrefab: {fileID: 114653165493194644, guid: 48e3ae725170fe946925192dae4cee3a,
     type: 2}
