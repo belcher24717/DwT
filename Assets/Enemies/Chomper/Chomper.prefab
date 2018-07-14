@@ -1948,7 +1948,7 @@ Transform:
   m_LocalScale: {x: 1, y: 0.71847, z: 0.7249104}
   m_Children: []
   m_Father: {fileID: 4725331798242566}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4195130765386980
 Transform:
@@ -2030,7 +2030,7 @@ Transform:
   m_Children:
   - {fileID: 4866109845200460}
   m_Father: {fileID: 4725331798242566}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4240050192805686
 Transform:
@@ -2852,8 +2852,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4823108013691270}
-  - {fileID: 4237958781599004}
   - {fileID: 4189082960585616}
+  - {fileID: 4237958781599004}
   - {fileID: 4823703925652758}
   - {fileID: 224658247080672562}
   m_Father: {fileID: 0}
@@ -3966,7 +3966,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Health: 100
-  Speed: 2
+  Speed: 3
   ArmorType: 1
   SlowResistance: 0
   GoldValue: 0

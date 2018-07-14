@@ -18,7 +18,7 @@ public abstract class Tower : MonoBehaviour
     public int Damage;
     public int MaxTargetEnemies = 1;
 
-    private bool CanTarget { get { return TurretSwivel != null; } }
+    private bool CanFace { get { return TurretSwivel != null; } }
     private bool CanAttack { get { return _isFacingTarget && _lastAttack.AddSeconds(FireRate) < DateTime.Now; } }
     private bool _isFacingTarget;
     private DateTime _lastAttack;
@@ -29,7 +29,7 @@ public abstract class Tower : MonoBehaviour
     // can be overriden in multi-target situations 
     public void FaceEnemy()
     {
-        if (!CanTarget)
+        if (!CanFace)
             return;
 
         if (_targetedEnemies.Count < 1 || _targetedEnemies[0] == null || !_targetedEnemies[0].isActiveAndEnabled)
@@ -96,7 +96,7 @@ public abstract class Tower : MonoBehaviour
             }
         }
 
-        if (CanTarget)
+        if (CanFace)
             FaceEnemy();
 
         if (_targetedEnemies.Count > 0)

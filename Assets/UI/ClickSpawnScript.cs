@@ -155,7 +155,7 @@ public class ClickSpawnScript : MonoBehaviour
         //if we're placing a real tower, and the path was ok
         if (placedCursorTower?.transform.position == GridPosition && !placeCursorTower && canPlace)
         {
-            placedTowers.Add(Instantiate(SelectedTower, GridPosition, Quaternion.identity, SpawnParent));
+            placedTowers.Add(Instantiate(SelectedTower, GridPosition, SelectedTower.transform.rotation, SpawnParent));
             DestroyPlacedCursorTower();
         }
         

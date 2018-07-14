@@ -11,6 +11,7 @@ public class StatusEffect : MonoBehaviour
     public float Duration;
     public float EffectPercent;
     public MonoBehaviour ObjectToAffect;
+    public string Id;
 
     [HideInInspector]
     public string TypeToAffect;
