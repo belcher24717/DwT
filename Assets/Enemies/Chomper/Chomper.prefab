@@ -2848,7 +2848,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1294954626500484}
   m_LocalRotation: {x: -0, y: -0.9630646, z: -0, w: 0.26927054}
-  m_LocalPosition: {x: 44.071503, y: 0.031417847, z: 21.070395}
+  m_LocalPosition: {x: 16.157448, y: 0.031417847, z: 10.053767}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4823108013691270}
@@ -3966,11 +3966,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Health: 100
-  Speed: 1
-  ArmorType: 0
+  Speed: 2
+  ArmorType: 1
   SlowResistance: 0
   GoldValue: 0
-  Damage: 10
+  Damage: 5
   HealthBar: {fileID: 114858901840182060}
   Animator: {fileID: 95227115508775242}
 --- !u!114 &114658823732402352

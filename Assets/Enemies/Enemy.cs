@@ -41,15 +41,15 @@ public class Enemy : MonoBehaviour
     {
         GetComponent<NavMeshAgent>().speed = Speed;
         _currentHealth = Health;
-        if (Animator != null)
-            Animator.Play("Walk");
-
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        if(Speed < 2.5f)
+            Animator?.Play("Walk");
+        else
+            Animator?.Play("Run");
     }
 
     // handles display of damage effects / particles
