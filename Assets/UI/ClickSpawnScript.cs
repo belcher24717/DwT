@@ -16,11 +16,13 @@ public class ClickSpawnScript : MonoBehaviour
     protected bool gridPositionChanged;                 // true if the cursor has changed grid positions
 
     public Transform SpawnParent;
-    public List<EnemySpawner> Spawners = new List<EnemySpawner>();
+    [HideInInspector]
+    public static List<GameObject> Spawners = new List<GameObject>();
+    [HideInInspector]
     public GameObject Destination;
 
-    private static GameObject selectedTower;            // a static reference to the currently selected tower
-    public static GameObject SelectedTower              // property
+    private static Tower selectedTower;            // a static reference to the currently selected tower
+    public static Tower SelectedTower              // property
     {
         get
         {
@@ -62,11 +64,28 @@ public class ClickSpawnScript : MonoBehaviour
     void Awake()
     {
         _towers = new List<SelectTowerScript>(transform.GetComponentsInChildren<SelectTowerScript>());
+
+        lock (Spawners)
+        {
+            if (Spawners == null)
+            {
+                var spawns = GameObject.FindGameObjectsWithTag("EnemySpawner");
+                foreach (GameObject spawn in spawns)
+                    Spawners.Add(spawn);
+            }
+        }
     }
 
     // Update is called once per frame
     void Update ()
     {
+        if (Input.GetMouseButton(1))
+        {
+            ResetSelection();
+            DestroyPlacedCursorTower();
+            Tower.DeselectTower();
+        }
+
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         bool rayHit = Physics.Raycast(ray, out hit);
 
@@ -104,7 +123,7 @@ public class ClickSpawnScript : MonoBehaviour
     private bool PathExists()
     {
         NavMeshPath path = new NavMeshPath();
-        foreach (EnemySpawner spawner in Spawners)
+        foreach (GameObject spawner in Spawners)
         {
             spawner?.GetComponent<NavMeshAgent>().CalculatePath(Destination.transform.position, path);
             if (path.status != NavMeshPathStatus.PathComplete)
@@ -116,8 +135,8 @@ public class ClickSpawnScript : MonoBehaviour
     void PlaceTowerOnGrid(Vector3 buildPoint, bool placeCursorTower)
     {
         //first check for canPlace, is the place taken?
-        bool canPlace = !placedTowers.Any(t => t.transform.position == GridPosition);
-
+        bool canPlace = !placedTowers.Any(t => t.transform.position == GridPosition) && (SelectedTower == null || SelectedTower.BaseCost <= PlayPurseScript.Instance.Balance);
+        
         //if there is no cursor tower, don't even place anything
         if (CursorTower == null)
             return;
@@ -155,7 +174,8 @@ public class ClickSpawnScript : MonoBehaviour
         //if we're placing a real tower, and the path was ok
         if (placedCursorTower?.transform.position == GridPosition && !placeCursorTower && canPlace)
         {
-            placedTowers.Add(Instantiate(SelectedTower, GridPosition, SelectedTower.transform.rotation, SpawnParent));
+            placedTowers.Add(Instantiate(SelectedTower.gameObject, GridPosition, SelectedTower.gameObject.transform.rotation, SpawnParent));
+            PlayPurseScript.Instance.ChangeBalance(-SelectedTower.BaseCost);
             DestroyPlacedCursorTower();
         }
         
@@ -169,10 +189,12 @@ public class ClickSpawnScript : MonoBehaviour
     /// <returns>previous can place value</returns>
     private bool DestroyPlacedCursorTower()
     {
+
         bool? couldPlace = placedCursorTower?.GetComponent<TowerCursorScript>()?.GoodPlace;
         GameObject.Destroy(placedCursorTower);
         placedCursorTower = null;
 
         return couldPlace == true;
     }
+
 }

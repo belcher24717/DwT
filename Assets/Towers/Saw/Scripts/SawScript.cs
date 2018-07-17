@@ -7,13 +7,13 @@ public class SawScript : Tower
     public override bool Attack()
     {
         foreach(Enemy enemy in _targetedEnemies)
-            enemy?.TakeDamage(Damage, AttackType);
+            enemy?.TakeDamage((int)DamageUpgrades[_damageUpgradeIndex].Value, AttackType);
         return true;
     }
 
     public override List<Enemy> PickEnemies()
     {
-        return PickEnemyFactory.PickEnemiesInRange(Range, transform.position);
+        return PickEnemyFactory.PickEnemiesInRange(RangeUpgrades[_rangeUpgradeIndex].Value, transform.position);
     }
 
     // Use this for initialization

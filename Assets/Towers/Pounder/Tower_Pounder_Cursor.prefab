@@ -96,7 +96,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73c52a05649490845b38644b6c3a6e33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Tower: {fileID: 114008891130563720, guid: baef8a807d76a234b88379c893fa8620, type: 2}
+  Tower: {fileID: 114609816389741000, guid: 210f3a6a9147afc4780bd51bc2cc403d, type: 2}
   GoodPlacement: {fileID: 2100000, guid: 8a45931c65c9a404597f8e91150156e3, type: 2}
   BadPlacement: {fileID: 2100000, guid: fc46d16e31ac4a94f96c8004cbdd2730, type: 2}
 --- !u!120 &120031557840356320

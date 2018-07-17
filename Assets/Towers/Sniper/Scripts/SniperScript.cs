@@ -10,14 +10,14 @@ public class SniperScript : Tower
         Animator.Play("Shoot");
 
         if (_targetedEnemies.Count > 0)
-            _targetedEnemies[0]?.TakeDamage(Damage, AttackType);
+            _targetedEnemies[0]?.TakeDamage((int)DamageUpgrades[_damageUpgradeIndex].Value, AttackType);
 
         return true;
     }
 
     public override List<Enemy> PickEnemies()
     {
-        return PickEnemyFactory.PickClosestEnemy(Range, transform.position);
+        return PickEnemyFactory.PickClosestEnemy(RangeUpgrades[_rangeUpgradeIndex].Value, transform.position);
     }
 
     // Use this for initialization

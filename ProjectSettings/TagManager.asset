@@ -7,6 +7,7 @@ TagManager:
   - CursorOk
   - Crystal
   - Floor
+  - EnemySpawner
   layers:
   - Default
   - TransparentFX

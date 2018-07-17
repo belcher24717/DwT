@@ -21,7 +21,7 @@ public class TowerCursorScript : MonoBehaviour
 
         line.positionCount = SEGMENTS + 1;
         line.useWorldSpace = false;
-        _radius = (float)Tower.Range / 2;
+        _radius = Tower.RangeUpgrades[0].Value;
 
         CreatePoints();
         SetMesh();

@@ -30,7 +30,7 @@ public class Enemy : MonoBehaviour
         {
             _currentHealth = 0;
             HealthBar.fillAmount = 0;
-            DeathEffect();
+            Death();
             this.gameObject.SetActive(false);
         }
 
@@ -58,9 +58,9 @@ public class Enemy : MonoBehaviour
 
     }
 
-    void DeathEffect()
+    void Death()
     {
-
+        PlayPurseScript.Instance.ChangeBalance(GoldValue);
     }
 
     void OnTriggerEnter(Collider other)

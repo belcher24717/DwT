@@ -6,9 +6,9 @@ using UnityEngine;
 public static class PickEnemyFactory
 {
 
-    public static List<Enemy> PickClosestEnemy(double range, Vector3 position)
+    public static List<Enemy> PickClosestEnemy(float range, Vector3 position)
     {
-        double distanceToEnemy = range + 1;
+        float distanceToEnemy = range + 1;
         Enemy enemyToFace = null;
         List<Enemy> enemies = new List<Enemy>();
 
@@ -35,7 +35,7 @@ public static class PickEnemyFactory
         return enemies;
     }
 
-    public static List<Enemy> PickEnemiesInRange(double range, Vector3 position, int max = int.MaxValue)
+    public static List<Enemy> PickEnemiesInRange(float range, Vector3 position, int max = int.MaxValue)
     {
         float distanceToEnemy;
         List<Enemy> enemiesInRange = new List<Enemy>();

@@ -11,7 +11,7 @@ public class EnemySpawner : MonoBehaviour
     public Transform SpawnParent;
     public GameObject Destination;
     public Wave[] Waves;
-
+    private int _spawnCount;
     // Use this for initialization
     void Start()
     {
@@ -24,8 +24,8 @@ public class EnemySpawner : MonoBehaviour
 
     public void StartWave()
     {
-        Waves[currentWave].Initialize();
-        InvokeRepeating("SpawnEnemy", Waves[currentWave].SpawnDelay, Waves[currentWave].SpawnTimer);
+        _spawnCount = 0;
+        InvokeRepeating("SpawnEnemy", 0, Waves[currentWave].SpawnTimer);
         currentWave = currentWave + 1 % Waves.Length;
     }
 
@@ -38,13 +38,13 @@ public class EnemySpawner : MonoBehaviour
     // Spawn enemy (prefab 'test')
     void SpawnEnemy()
     {
-        Enemy nextEnemy = Waves[currentWave].NextEnemy();
+        Enemy nextEnemy = _spawnCount < Waves[currentWave].Enemies.Count ? Waves[currentWave].Enemies[_spawnCount] : null;
         // stop when all enemies have been spawned
         if (nextEnemy == null)
             return;
 
         // instantiate the enemy prefab
-        GameObject newEnemy = Instantiate(nextEnemy.gameObject, spawnPoint, Quaternion.identity, SpawnParent);
+        GameObject newEnemy = Instantiate(nextEnemy.gameObject, spawnPoint, Quaternion.LookRotation(Destination.transform.position - spawnPoint), SpawnParent);
 
         // set enemy destination
         CorrectNavMeshAgentScript navScript = newEnemy.GetComponent<CorrectNavMeshAgentScript>();
@@ -52,6 +52,7 @@ public class EnemySpawner : MonoBehaviour
             navScript.Destination = Destination;
 
         EnemyController.Instance.AddEnemy(newEnemy.GetComponent<Enemy>());
+        _spawnCount++;
     }
 
 }

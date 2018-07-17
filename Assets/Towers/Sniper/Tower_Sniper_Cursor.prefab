@@ -57,6 +57,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 0}
   m_StaticBatchInfo:
@@ -96,7 +97,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73c52a05649490845b38644b6c3a6e33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Tower: {fileID: 114704698648857106, guid: 1efa6a6d8999c0144829318a5c3bd08b, type: 2}
+  Tower: {fileID: 114874488774761194, guid: 408951f64b754c141a741d5adfc8a7d2, type: 2}
   GoodPlacement: {fileID: 2100000, guid: 8a45931c65c9a404597f8e91150156e3, type: 2}
   BadPlacement: {fileID: 2100000, guid: fc46d16e31ac4a94f96c8004cbdd2730, type: 2}
 --- !u!120 &120805234760568492
@@ -112,6 +113,7 @@ LineRenderer:
   m_MotionVectors: 0
   m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 0
+  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 0}
   m_StaticBatchInfo:
@@ -141,12 +143,15 @@ LineRenderer:
     widthCurve:
       serializedVersion: 2
       m_Curve:
-      - serializedVersion: 2
+      - serializedVersion: 3
         time: 0
         value: 1
         inSlope: 0
         outSlope: 0
         tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4

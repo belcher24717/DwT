@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class SelectTowerScript : ClickSpawnScript
@@ -7,11 +8,12 @@ public class SelectTowerScript : ClickSpawnScript
     /// <summary>
     /// The Tower that will spawn on click
     /// </summary>
-    public GameObject Tower;
+    public Tower Tower;
     /// <summary>
     /// The Tower to use as the Cursor for building
     /// </summary>
     public TowerCursorScript CursorTower;
+    public TextMeshProUGUI uiText;
 
     private bool _selected;
     public bool Selected
@@ -37,6 +39,7 @@ public class SelectTowerScript : ClickSpawnScript
     {
         Selected = false;
         SetMesh();
+        uiText.SetText($"{Tower.TowerName}\n${Tower.BaseCost}");
     }
 
     // Update is called once per frame
