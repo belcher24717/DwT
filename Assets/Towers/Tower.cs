@@ -6,7 +6,7 @@ using System.Linq;
 
 public abstract class Tower : MonoBehaviour
 {
-    
+    //Test comment
     public AttackType AttackType;
     protected List<Enemy> _targetedEnemies;
 
