@@ -13,7 +13,7 @@ public class SawScript : Tower
 
     public override List<Enemy> PickEnemies()
     {
-        return PickEnemyFactory.PickEnemiesInRange(RangeUpgrades[_rangeUpgradeIndex].Value, transform.position);
+        return PickEnemyFactory.PickEnemiesInRange(RangeUpgrades[_rangeUpgradeIndex].Value, transform.position, (int)MaxTargetEnemiesUpgrades[_maxTargetEnemiesUpgradeIndex].Value);
     }
 
     // Use this for initialization

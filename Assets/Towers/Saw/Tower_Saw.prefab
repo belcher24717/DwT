@@ -62,6 +62,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1586142891100510
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4403464789591122}
+  - component: {fileID: 120665900774716552}
+  m_Layer: 0
+  m_Name: LineRenderer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1603299785753956
 GameObject:
   m_ObjectHideFlags: 1
@@ -108,8 +124,7 @@ GameObject:
   - component: {fileID: 208063530918526540}
   - component: {fileID: 114845074483462444}
   - component: {fileID: 65382093348237364}
-  - component: {fileID: 120822148608650366}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Tower_Saw
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -206,6 +221,19 @@ Transform:
   m_Father: {fileID: 4551620776732416}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4403464789591122
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1586142891100510}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4551620776732416}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!4 &4420250850148066
 Transform:
   m_ObjectHideFlags: 1
@@ -247,6 +275,7 @@ Transform:
   - {fileID: 4007252652418966}
   - {fileID: 4073857644040718}
   - {fileID: 4929436915956156}
+  - {fileID: 4403464789591122}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -521,12 +550,12 @@ MonoBehaviour:
     Value: 5
   BaseCost: 30
   TowerName: Saw
---- !u!120 &120822148608650366
+--- !u!120 &120665900774716552
 LineRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1864572668193234}
+  m_GameObject: {fileID: 1586142891100510}
   m_Enabled: 0
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -555,8 +584,9 @@ LineRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
-  m_Positions: []
+  m_SortingOrder: 0
+  m_Positions:
+  - {x: 0, y: 0, z: 0}
   m_Parameters:
     serializedVersion: 2
     widthMultiplier: 0.1
@@ -564,7 +594,7 @@ LineRenderer:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
-        time: 0.30454254
+        time: 0
         value: 1
         inSlope: 0
         outSlope: 0
@@ -574,7 +604,7 @@ LineRenderer:
         outWeight: 0.33333334
       m_PreInfinity: 2
       m_PostInfinity: 2
-      m_RotationOrder: 0
+      m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
       key0: {r: 1, g: 1, b: 1, a: 1}
@@ -608,7 +638,7 @@ LineRenderer:
     numCapVertices: 0
     alignment: 0
     textureMode: 1
-    generateLightingData: 1
+    generateLightingData: 0
   m_UseWorldSpace: 0
   m_Loop: 1
 --- !u!198 &198128788239267490

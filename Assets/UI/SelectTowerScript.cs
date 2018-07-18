@@ -68,6 +68,8 @@ public class SelectTowerScript : ClickSpawnScript
         {
             ResetSelection();
             Selected = true;
+            ChangeSpawnParentLayer(2);
+            Tower.DeselectTower();
         }
         else
             ResetSelection();

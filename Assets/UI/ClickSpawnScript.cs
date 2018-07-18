@@ -65,15 +65,13 @@ public class ClickSpawnScript : MonoBehaviour
     {
         _towers = new List<SelectTowerScript>(transform.GetComponentsInChildren<SelectTowerScript>());
 
-        lock (Spawners)
+        if (Spawners.Count == 0)
         {
-            if (Spawners == null)
-            {
-                var spawns = GameObject.FindGameObjectsWithTag("EnemySpawner");
-                foreach (GameObject spawn in spawns)
-                    Spawners.Add(spawn);
-            }
+            var spawns = GameObject.FindGameObjectsWithTag("EnemySpawner");
+            foreach (GameObject spawn in spawns)
+                Spawners.Add(spawn);
         }
+        
     }
 
     // Update is called once per frame
@@ -113,11 +111,18 @@ public class ClickSpawnScript : MonoBehaviour
         }
 	}
 
+    protected void ChangeSpawnParentLayer(int layer)
+    {
+        foreach (Transform trans in SpawnParent.GetComponentsInChildren<Transform>(true))
+            trans.gameObject.layer = layer;
+    }
+
     protected void ResetSelection()
     {
         _towers.ForEach(t => t.Selected = false);
         selectedTower = null;
         cursorTower = null;
+        ChangeSpawnParentLayer(0);
     }
 
     private bool PathExists()
@@ -135,7 +140,7 @@ public class ClickSpawnScript : MonoBehaviour
     void PlaceTowerOnGrid(Vector3 buildPoint, bool placeCursorTower)
     {
         //first check for canPlace, is the place taken?
-        bool canPlace = !placedTowers.Any(t => t.transform.position == GridPosition) && (SelectedTower == null || SelectedTower.BaseCost <= PlayPurseScript.Instance.Balance);
+        bool canPlace = !placedTowers.Any(t => t.transform.position == GridPosition) && (SelectedTower != null && SelectedTower.BaseCost <= PlayPurseScript.Instance.Balance);
         
         //if there is no cursor tower, don't even place anything
         if (CursorTower == null)
