@@ -6,7 +6,6 @@ using System.Linq;
 
 public abstract class Tower : MonoBehaviour
 {
-    //Test comment
     public AttackType AttackType;
     protected List<Enemy> _targetedEnemies;
 
@@ -16,14 +15,18 @@ public abstract class Tower : MonoBehaviour
     public int TurnSpeed = 200;
 
     //upgradeable
-    protected int _fireRateUpgradeIndex = 0;
+    public int _fireRateUpgradeIndex { get; protected set; } = 0;
     public List<UpgradeStep> FireRateUpgrades;
-    protected int _rangeUpgradeIndex = 0;
+
+    public int _rangeUpgradeIndex { get; protected set; } = 0;
     public List<UpgradeStep> RangeUpgrades;
-    protected int _damageUpgradeIndex = 0;
+
+    public int _damageUpgradeIndex { get; protected set; } = 0;
     public List<UpgradeStep> DamageUpgrades;
-    protected int _maxTargetEnemiesUpgradeIndex = 0;
+
+    public int _maxTargetEnemiesUpgradeIndex { get; protected set; } = 0;
     public List<UpgradeStep> MaxTargetEnemiesUpgrades;
+    //upgradeable
 
     public int BaseCost;
     public string TowerName;
@@ -52,7 +55,7 @@ public abstract class Tower : MonoBehaviour
             return;
         }
 
-        var lookPos =  transform.position - _targetedEnemies[0].transform.position;
+        var lookPos = transform.position - _targetedEnemies[0].transform.position;
         lookPos.y = 0;
 
         var rotation = Quaternion.LookRotation(lookPos) * Quaternion.Euler(-90, 0, 0);
@@ -70,7 +73,7 @@ public abstract class Tower : MonoBehaviour
         if (Attack())
         {
             //we attacked, so play the effects
-            if(ShotEffects != null)
+            if (ShotEffects != null)
                 foreach (ParticleSystem p in ShotEffects)
                     p?.Play();
 
@@ -89,7 +92,7 @@ public abstract class Tower : MonoBehaviour
         _targetedEnemies = new List<Enemy>();
         _isFacingTarget = true;
         _lastAttack = DateTime.Now - TimeSpan.FromSeconds(FireRateUpgrades[_fireRateUpgradeIndex].Value);
-        _radiusDisplay = this.gameObject.GetComponent<LineRenderer>();
+        _radiusDisplay = this.gameObject.GetComponentInChildren<LineRenderer>();
         UpdateRadiusDisplay(RangeUpgrades[_rangeUpgradeIndex].Value);
     }
 
@@ -160,19 +163,27 @@ public abstract class Tower : MonoBehaviour
         {
             PlayerSelectedTower.GetComponentsInChildren<Renderer>().ToList().ForEach(x => x.material.color = Color.white);
             PlayerSelectedTower.HideRadius();
+            UpgradeTower.Instance.HideUpgrades();
             //set the towers "showing selected" properties back
         }
+    }
+
+    private void SelectTower()
+    {
+        PlayerSelectedTower = this;
+        PlayerSelectedTower.GetComponentsInChildren<Renderer>().ToList().ForEach(x => x.material.color = Color.blue);
+        PlayerSelectedTower.ShowRadius();
+        UpgradeTower.Instance.ShowUpgrades();
     }
 
     private void OnMouseDown()
     {
         // remove currently selected tower graphic
         DeselectTower();
-        
+        SelectTower();
+
         //update to show we're selected
-        PlayerSelectedTower = this;
-        PlayerSelectedTower.GetComponentsInChildren<Renderer>().ToList().ForEach(x => x.material.color = Color.blue);
-        PlayerSelectedTower.ShowRadius();
+
 
         // add graphic for selection
 
@@ -187,7 +198,7 @@ public abstract class Tower : MonoBehaviour
             return;
 
         _radiusDisplay.positionCount = RADIUS_DISPLAY_SEGMENTS + 1;
-        
+
         float x;
         float y = 0.2f;
         float z;
