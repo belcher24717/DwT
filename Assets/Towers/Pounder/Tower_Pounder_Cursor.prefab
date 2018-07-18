@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 114022571876707250}
   - component: {fileID: 33426048733839702}
   - component: {fileID: 23041167296715216}
+  - component: {fileID: 208978174081128256}
   m_Layer: 0
   m_Name: Tower_Pounder_Cursor
   m_TagString: Untagged
@@ -190,3 +191,18 @@ LineRenderer:
     generateLightingData: 1
   m_UseWorldSpace: 1
   m_Loop: 1
+--- !u!208 &208978174081128256
+NavMeshObstacle:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1528077027482170}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.4, y: 0.5, z: 0.4}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 0
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5

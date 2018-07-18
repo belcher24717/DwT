@@ -48,26 +48,10 @@ public class UpgradeTower : MonoBehaviour
 
     public void ShowUpgrades()
     {
-        if (Tower.PlayerSelectedTower.DamageUpgrades.Count - 1 > Tower.PlayerSelectedTower._damageUpgradeIndex &&
-            Tower.PlayerSelectedTower.DamageUpgrades.Count > 1)
-        {
-            ShowDamage();
-        }
-        if (Tower.PlayerSelectedTower.RangeUpgrades.Count - 1 > Tower.PlayerSelectedTower._rangeUpgradeIndex &&
-            Tower.PlayerSelectedTower.RangeUpgrades.Count > 1)
-        {
-            ShowRange();
-        }
-        if (Tower.PlayerSelectedTower.MaxTargetEnemiesUpgrades.Count - 1 > Tower.PlayerSelectedTower._maxTargetEnemiesUpgradeIndex &&
-            Tower.PlayerSelectedTower.MaxTargetEnemiesUpgrades.Count > 1)
-        {
-            ShowMaxTargetEnemies();
-        }
-        if (Tower.PlayerSelectedTower.FireRateUpgrades.Count - 1 > Tower.PlayerSelectedTower._fireRateUpgradeIndex &&
-            Tower.PlayerSelectedTower.FireRateUpgrades.Count > 1)
-        {
-            ShowFireRate();
-        }
+        ShowDamage();
+        ShowRange();
+        ShowMaxTargetEnemies();
+        ShowFireRate();
     }
 
     private void ShowDamage()
