@@ -120,6 +120,9 @@ public class ClickSpawnScript : MonoBehaviour
         Tower.DeselectTower();
     }
 
+    #region UICamera Control
+
+    private bool _cameraShrinking = false;
     private bool IsWaveActive()
     {
         bool spawnersActive = Spawners.Any(x => x.GetComponent<EnemySpawner>() != null && x.GetComponent<EnemySpawner>().WaveActive);
@@ -128,8 +131,11 @@ public class ClickSpawnScript : MonoBehaviour
         bool waveActive = (spawnersActive || enemiesAlive);
         if (waveActive)
         {
-            if (UICamera.isActiveAndEnabled)
-                InvokeRepeating("ShrinkUICamera", 0, 0.1f); //UICamera.enabled = false;
+            if (UICamera.isActiveAndEnabled && !_cameraShrinking)
+            {
+                _cameraShrinking = true;
+                InvokeRepeating("ShrinkUICamera", 0, 0.01f);
+            }
             ClearTowerSelection();
         }
         else
@@ -137,7 +143,7 @@ public class ClickSpawnScript : MonoBehaviour
             if (!UICamera.isActiveAndEnabled)
             {
                 UICamera.enabled = true;
-                InvokeRepeating("GrowUICamera", 0, 0.1f); //UICamera.enabled = true;
+                InvokeRepeating("GrowUICamera", 0, 0.01f);
             }
         }
 
@@ -149,27 +155,31 @@ public class ClickSpawnScript : MonoBehaviour
     {
         Rect rect = new Rect(UICamera.rect);
         rect.height -= 0.01f;
-        if (rect.height < 0)
-            rect.height = 0;
-
-        UICamera.rect = rect;
-
         if (rect.height <= 0)
         {
+            rect.height = 0;
             UICamera.enabled = false;
+            _cameraShrinking = false;
             CancelInvoke();
         }
+
+        UICamera.rect = rect;
     }
 
     private void GrowUICamera()
     {
         Rect rect = new Rect(UICamera.rect);
         rect.height += 0.01f;
-        UICamera.rect = rect;
-
         if (rect.height >= 0.1f)
+        {
+            rect.height = 0.1f;
             CancelInvoke();
+        }
+
+        UICamera.rect = rect;
     }
+
+    #endregion
 
     protected void ChangeSpawnParentLayer(int layer)
     {
