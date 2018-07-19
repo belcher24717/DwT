@@ -9,7 +9,7 @@ public class PlayPurseScript : MonoBehaviour {
     public static PlayPurseScript Instance { get; set; }
     public int Balance { get; private set; }
 
-    private const string PREFIX = "Balance: ";
+    private const string PREFIX = "Towerbucks: ";
     public TextMeshPro UIElement;
     public int InitialBalance;
     private Object _balanceLock = new Object();
