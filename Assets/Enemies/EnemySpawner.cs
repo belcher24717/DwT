@@ -12,6 +12,9 @@ public class EnemySpawner : MonoBehaviour
     public GameObject Destination;
     public Wave[] Waves;
     private int _spawnCount;
+
+    public bool WaveActive { get; private set; }
+
     // Use this for initialization
     void Start()
     {
@@ -24,6 +27,7 @@ public class EnemySpawner : MonoBehaviour
 
     public void StartWave()
     {
+        WaveActive = true;
         _spawnCount = 0;
         InvokeRepeating("SpawnEnemy", 0, Waves[currentWave].SpawnTimer);
         currentWave = currentWave + 1 % Waves.Length;
@@ -41,7 +45,11 @@ public class EnemySpawner : MonoBehaviour
         Enemy nextEnemy = _spawnCount < Waves[currentWave].Enemies.Count ? Waves[currentWave].Enemies[_spawnCount] : null;
         // stop when all enemies have been spawned
         if (nextEnemy == null)
+        {
+            WaveActive = false;
+            CancelInvoke();
             return;
+        }
 
         // instantiate the enemy prefab
         GameObject newEnemy = Instantiate(nextEnemy.gameObject, spawnPoint, Quaternion.LookRotation(Destination.transform.position - spawnPoint), SpawnParent);

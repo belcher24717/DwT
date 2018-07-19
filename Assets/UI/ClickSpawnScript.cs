@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -15,6 +16,8 @@ public class ClickSpawnScript : MonoBehaviour
 
     protected bool gridPositionChanged;                 // true if the cursor has changed grid positions
 
+    public Camera UICamera;
+    public GameObject EnemySpawns;
     public Transform SpawnParent;
     [HideInInspector]
     public static List<GameObject> Spawners = new List<GameObject>();
@@ -77,16 +80,15 @@ public class ClickSpawnScript : MonoBehaviour
     // Update is called once per frame
     void Update ()
     {
+        if (IsWaveActive())
+            return;
+
         if (Input.GetMouseButton(1))
-        {
-            ResetSelection();
-            DestroyPlacedCursorTower();
-            Tower.DeselectTower();
-        }
+            ClearTowerSelection();
 
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                    Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         bool rayHit = Physics.Raycast(ray, out hit);
-
+        
         // only place towers on floor
         if (rayHit && hit.transform.tag == "Floor")
         {
@@ -110,6 +112,64 @@ public class ClickSpawnScript : MonoBehaviour
             gridPositionChanged = true;
         }
 	}
+
+    private void ClearTowerSelection()
+    {
+        ResetSelection();
+        DestroyPlacedCursorTower();
+        Tower.DeselectTower();
+    }
+
+    private bool IsWaveActive()
+    {
+        bool spawnersActive = Spawners.Any(x => x.GetComponent<EnemySpawner>() != null && x.GetComponent<EnemySpawner>().WaveActive);
+        bool enemiesAlive = EnemySpawns.transform.childCount > 0;
+
+        bool waveActive = (spawnersActive || enemiesAlive);
+        if (waveActive)
+        {
+            if (UICamera.isActiveAndEnabled)
+                InvokeRepeating("ShrinkUICamera", 0, 0.1f); //UICamera.enabled = false;
+            ClearTowerSelection();
+        }
+        else
+        {
+            if (!UICamera.isActiveAndEnabled)
+            {
+                UICamera.enabled = true;
+                InvokeRepeating("GrowUICamera", 0, 0.1f); //UICamera.enabled = true;
+            }
+        }
+
+        // if any spawners are active or any enmies are alive, return true
+        return waveActive;
+    }
+
+    private void ShrinkUICamera()
+    {
+        Rect rect = new Rect(UICamera.rect);
+        rect.height -= 0.01f;
+        if (rect.height < 0)
+            rect.height = 0;
+
+        UICamera.rect = rect;
+
+        if (rect.height <= 0)
+        {
+            UICamera.enabled = false;
+            CancelInvoke();
+        }
+    }
+
+    private void GrowUICamera()
+    {
+        Rect rect = new Rect(UICamera.rect);
+        rect.height += 0.01f;
+        UICamera.rect = rect;
+
+        if (rect.height >= 0.1f)
+            CancelInvoke();
+    }
 
     protected void ChangeSpawnParentLayer(int layer)
     {

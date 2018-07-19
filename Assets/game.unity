@@ -161,6 +161,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   grid: {fileID: 0}
+  UICamera: {fileID: 0}
+  EnemySpawns: {fileID: 0}
   SpawnParent: {fileID: 1731813592}
   Destination: {fileID: 0}
   Tower: {fileID: 114845074483462444, guid: 84475c6115a71df4c9ce869fde9b4c50, type: 2}
@@ -1973,6 +1975,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   grid: {fileID: 0}
+  UICamera: {fileID: 0}
+  EnemySpawns: {fileID: 0}
   SpawnParent: {fileID: 1731813592}
   Destination: {fileID: 0}
   Tower: {fileID: 114609816389741000, guid: 210f3a6a9147afc4780bd51bc2cc403d, type: 2}
@@ -3598,6 +3602,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   grid: {fileID: 0}
+  UICamera: {fileID: 0}
+  EnemySpawns: {fileID: 0}
   SpawnParent: {fileID: 1731813592}
   Destination: {fileID: 0}
   Tower: {fileID: 114841581391086974, guid: a7d520cd7d07c8144a4ef34c9c3f5a20, type: 2}
@@ -3788,6 +3794,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   grid: {fileID: 0}
+  UICamera: {fileID: 0}
+  EnemySpawns: {fileID: 0}
   SpawnParent: {fileID: 1731813592}
   Destination: {fileID: 0}
   Tower: {fileID: 114854236119017050, guid: aa4df9b18504b3f498a0c96cfe07d1d3, type: 2}
@@ -3879,6 +3887,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   grid: {fileID: 2031365544}
+  UICamera: {fileID: 229839729}
+  EnemySpawns: {fileID: 780333610}
   SpawnParent: {fileID: 1731813592}
   Destination: {fileID: 1687202415}
 --- !u!4 &1144292130
@@ -5670,6 +5680,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   grid: {fileID: 0}
+  UICamera: {fileID: 0}
+  EnemySpawns: {fileID: 0}
   SpawnParent: {fileID: 1731813592}
   Destination: {fileID: 0}
   Tower: {fileID: 114874488774761194, guid: 408951f64b754c141a741d5adfc8a7d2, type: 2}
