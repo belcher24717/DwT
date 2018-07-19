@@ -80,13 +80,17 @@ public class ClickSpawnScript : MonoBehaviour
     // Update is called once per frame
     void Update ()
     {
-        if (IsWaveActive())
+        //if the wave is active or the mouse is not in the main camera do nothing
+        if (IsWaveActive() || UICamera.pixelRect.Contains(Input.mousePosition))
+        {
+            DestroyPlacedCursorTower();
             return;
+        }
 
         if (Input.GetMouseButton(1))
             ClearTowerSelection();
 
-                    Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         bool rayHit = Physics.Raycast(ray, out hit);
         
         // only place towers on floor
