@@ -27,6 +27,9 @@ public class EnemySpawner : MonoBehaviour
 
     public void StartWave()
     {
+        if (WaveActive)
+            return;
+
         WaveActive = true;
         _spawnCount = 0;
         InvokeRepeating("SpawnEnemy", 0, Waves[currentWave].SpawnTimer);
