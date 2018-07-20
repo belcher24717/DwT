@@ -67,7 +67,7 @@ public class UpgradeTower : MonoBehaviour
             DamageUpgrade.SetText($"Damage:\n" +
                 $"{Tower.PlayerSelectedTower.DamageUpgrades[Tower.PlayerSelectedTower._damageUpgradeIndex].Value} >> " +
                 $"{Tower.PlayerSelectedTower.DamageUpgrades[Tower.PlayerSelectedTower._damageUpgradeIndex + 1].Value}\n" +
-                $"${Tower.PlayerSelectedTower.DamageUpgrades[Tower.PlayerSelectedTower._damageUpgradeIndex + 1].Cost}");
+                $"{Tower.PlayerSelectedTower.DamageUpgrades[Tower.PlayerSelectedTower._damageUpgradeIndex + 1].Cost} TB");
         }
     }
 
@@ -84,7 +84,7 @@ public class UpgradeTower : MonoBehaviour
             RangeUpgrade.SetText($"Range:\n" +
                 $"{Tower.PlayerSelectedTower.RangeUpgrades[Tower.PlayerSelectedTower._rangeUpgradeIndex].Value} >> " +
                 $"{Tower.PlayerSelectedTower.RangeUpgrades[Tower.PlayerSelectedTower._rangeUpgradeIndex + 1].Value}\n" +
-                $"${Tower.PlayerSelectedTower.RangeUpgrades[Tower.PlayerSelectedTower._rangeUpgradeIndex + 1].Cost}");
+                $"{Tower.PlayerSelectedTower.RangeUpgrades[Tower.PlayerSelectedTower._rangeUpgradeIndex + 1].Cost} TB");
         }
     }
 
@@ -101,7 +101,7 @@ public class UpgradeTower : MonoBehaviour
             FireRateUpgrade.SetText($"Fire Rate:\n" +
                 $"{Tower.PlayerSelectedTower.FireRateUpgrades[Tower.PlayerSelectedTower._fireRateUpgradeIndex].Value} >> " +
                 $"{Tower.PlayerSelectedTower.FireRateUpgrades[Tower.PlayerSelectedTower._fireRateUpgradeIndex + 1].Value}\n" +
-                $"${Tower.PlayerSelectedTower.FireRateUpgrades[Tower.PlayerSelectedTower._fireRateUpgradeIndex + 1].Cost}");
+                $"{Tower.PlayerSelectedTower.FireRateUpgrades[Tower.PlayerSelectedTower._fireRateUpgradeIndex + 1].Cost} TB");
         }
     }
 
@@ -118,7 +118,7 @@ public class UpgradeTower : MonoBehaviour
             MaxTargetEnemiesUpgrade.SetText($"Max Targets:\n" +
                 $"{Tower.PlayerSelectedTower.MaxTargetEnemiesUpgrades[Tower.PlayerSelectedTower._maxTargetEnemiesUpgradeIndex].Value} >> " +
                 $"{Tower.PlayerSelectedTower.MaxTargetEnemiesUpgrades[Tower.PlayerSelectedTower._maxTargetEnemiesUpgradeIndex + 1].Value}\n" +
-                $"${Tower.PlayerSelectedTower.MaxTargetEnemiesUpgrades[Tower.PlayerSelectedTower._maxTargetEnemiesUpgradeIndex + 1].Cost}");
+                $"{Tower.PlayerSelectedTower.MaxTargetEnemiesUpgrades[Tower.PlayerSelectedTower._maxTargetEnemiesUpgradeIndex + 1].Cost} TB");
         }
     }
 

@@ -13,6 +13,8 @@ public abstract class Tower : MonoBehaviour
     public GameObject TurretSwivel;
     public Animator Animator;
     public int TurnSpeed = 200;
+    public Material SelectedMaterial;
+    private Dictionary<Renderer, Material> _baseMaterialDictionary;
 
     //upgradeable
     public int _fireRateUpgradeIndex { get; protected set; } = 0;
@@ -94,6 +96,9 @@ public abstract class Tower : MonoBehaviour
         _lastAttack = DateTime.Now - TimeSpan.FromSeconds(FireRateUpgrades[_fireRateUpgradeIndex].Value);
         _radiusDisplay = this.gameObject.GetComponentInChildren<LineRenderer>();
         UpdateRadiusDisplay(RangeUpgrades[_rangeUpgradeIndex].Value);
+        _baseMaterialDictionary = new Dictionary<Renderer, Material>();
+        foreach (Renderer r in this.gameObject.GetComponentsInChildren<Renderer>())
+            _baseMaterialDictionary.Add(r, r.material);
     }
 
     // Update is called once per frame
@@ -157,13 +162,15 @@ public abstract class Tower : MonoBehaviour
         _radiusDisplay.enabled = false;
     }
 
-    public static void DeselectTower()
+    public void DeselectTower()
     {
         if (PlayerSelectedTower != null)
         {
-            PlayerSelectedTower.GetComponentsInChildren<Renderer>().ToList().ForEach(x => x.material.color = Color.white);
+            foreach (Renderer r in this.gameObject.GetComponentsInChildren<Renderer>())
+                r.material = _baseMaterialDictionary[r];
             PlayerSelectedTower.HideRadius();
             UpgradeTower.Instance.HideUpgrades();
+            PlayerSelectedTower = null;
             //set the towers "showing selected" properties back
         }
     }
@@ -171,7 +178,7 @@ public abstract class Tower : MonoBehaviour
     private void SelectTower()
     {
         PlayerSelectedTower = this;
-        PlayerSelectedTower.GetComponentsInChildren<Renderer>().ToList().ForEach(x => x.material.color = Color.blue);
+        PlayerSelectedTower.GetComponentsInChildren<Renderer>().ToList().ForEach(child => child.material = SelectedMaterial);
         PlayerSelectedTower.ShowRadius();
         UpgradeTower.Instance.ShowUpgrades();
     }
@@ -179,7 +186,7 @@ public abstract class Tower : MonoBehaviour
     private void OnMouseDown()
     {
         // remove currently selected tower graphic
-        DeselectTower();
+        Tower.PlayerSelectedTower?.DeselectTower();
         SelectTower();
 
         //update to show we're selected
