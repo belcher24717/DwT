@@ -433,6 +433,7 @@ MonoBehaviour:
   TurretSwivel: {fileID: 1888107694221998}
   Animator: {fileID: 95596544541132838}
   TurnSpeed: 200
+  SelectedMaterial: {fileID: 2100000, guid: 51c6a0e49991f71498bff85fd48183ac, type: 2}
   FireRateUpgrades:
   - Cost: 0
     Value: 0.3

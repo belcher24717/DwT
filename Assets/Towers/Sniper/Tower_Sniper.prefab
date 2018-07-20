@@ -370,6 +370,7 @@ MonoBehaviour:
   TurretSwivel: {fileID: 1937646673470796}
   Animator: {fileID: 95536221563207110}
   TurnSpeed: 200
+  SelectedMaterial: {fileID: 2100000, guid: 51c6a0e49991f71498bff85fd48183ac, type: 2}
   FireRateUpgrades:
   - Cost: 0
     Value: 8
@@ -5011,7 +5012,7 @@ NavMeshObstacle:
   m_Enabled: 1
   serializedVersion: 3
   m_Shape: 1
-  m_Extents: {x: 0.4, y: 0.5, z: 0.4}
+  m_Extents: {x: 0.5, y: 0.5, z: 0.4}
   m_MoveThreshold: 0.1
   m_Carve: 1
   m_CarveOnlyStationary: 0

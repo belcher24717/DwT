@@ -268,9 +268,10 @@ MonoBehaviour:
   TurretSwivel: {fileID: 0}
   Animator: {fileID: 95448601397378296}
   TurnSpeed: 200
+  SelectedMaterial: {fileID: 2100000, guid: 51c6a0e49991f71498bff85fd48183ac, type: 2}
   FireRateUpgrades:
   - Cost: 0
-    Value: 6
+    Value: 1
   - Cost: 100
     Value: 5
   RangeUpgrades:
@@ -281,9 +282,9 @@ MonoBehaviour:
     Value: 0
   MaxTargetEnemiesUpgrades:
   - Cost: 0
-    Value: 5
+    Value: 1
   - Cost: 10
-    Value: 7
+    Value: 100
   BaseCost: 20
   TowerName: Pounder
   StatusEffect: {fileID: 114798959597646862, guid: f7c81101f304fa14bbf782b179627b51,
