@@ -6,6 +6,8 @@ using System.Linq;
 public class PounderScript : Tower
 {
     public StatusEffect StatusEffect;
+    public float SlowPercent;
+    public float SlowDuration;
 
     public override bool Attack()
     {
@@ -13,18 +15,16 @@ public class PounderScript : Tower
 
         foreach (Enemy enemy in _targetedEnemies)
         {
-            var effect = enemy.GetComponents<StatusEffect>().Where(e => e.Id == StatusEffect.Id).FirstOrDefault();
-            if (effect == null)
-                Instantiate(StatusEffect.gameObject, enemy.transform);
-            else
-                effect.Refresh();
+            var effect = Instantiate(StatusEffect, enemy.transform);
+            effect.EffectPercent = SlowPercent;
+            effect.Duration = SlowDuration;
         }
         return true;
     }
 
     public override List<Enemy> PickEnemies()
     {
-        return PickEnemyFactory.PickEnemiesInRange(RangeUpgrades[_rangeUpgradeIndex].Value, transform.position, (int)MaxTargetEnemiesUpgrades[_maxTargetEnemiesUpgradeIndex].Value);
+        return PickEnemyFactory.PickEnemiesInRange(RangeUpgrades[RangeUpgradeIndex].Value, transform.position, (int)MaxTargetEnemiesUpgrades[MaxTargetEnemiesUpgradeIndex].Value);
     }
 
     // Use this for initialization

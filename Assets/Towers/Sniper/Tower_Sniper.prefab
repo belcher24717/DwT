@@ -373,7 +373,7 @@ MonoBehaviour:
   SelectedMaterial: {fileID: 2100000, guid: 51c6a0e49991f71498bff85fd48183ac, type: 2}
   FireRateUpgrades:
   - Cost: 0
-    Value: 8
+    Value: 3
   RangeUpgrades:
   - Cost: 0
     Value: 15
@@ -384,7 +384,9 @@ MonoBehaviour:
   - Cost: 0
     Value: 1
   BaseCost: 60
-  TowerName: Sniper
+  TowerType: 4
+  ConcussionStatusEffect: {fileID: 114798959597646862, guid: f7c81101f304fa14bbf782b179627b51,
+    type: 2}
 --- !u!120 &120348058706892708
 LineRenderer:
   m_ObjectHideFlags: 1

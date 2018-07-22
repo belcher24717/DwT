@@ -8,11 +8,11 @@ public class CannonShellScript : MonoBehaviour
     public Transform Target;
     public float Radius;
     public ParticleSystem Explosion;
-
+    public float TimeToTarget = 1f;
     // Use this for initialization
     void Start()
     {
-        Vector3 launch = TrajectoryFactory.HitTargetAtTime(transform.position, Target.position, Physics.gravity, 0.2f);
+        Vector3 launch = TrajectoryFactory.HitTargetAtTime(transform.position, Target.position, Physics.gravity, TimeToTarget);
         GetComponent<Rigidbody>().AddForce(launch, ForceMode.VelocityChange);
     }
 

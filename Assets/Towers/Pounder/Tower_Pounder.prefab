@@ -286,9 +286,11 @@ MonoBehaviour:
   - Cost: 10
     Value: 100
   BaseCost: 20
-  TowerName: Pounder
+  TowerType: 2
   StatusEffect: {fileID: 114798959597646862, guid: f7c81101f304fa14bbf782b179627b51,
     type: 2}
+  SlowPercent: -50
+  SlowDuration: 3
 --- !u!120 &120307282524277458
 LineRenderer:
   m_ObjectHideFlags: 1

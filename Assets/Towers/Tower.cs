@@ -14,29 +14,32 @@ public abstract class Tower : MonoBehaviour
     public Animator Animator;
     public int TurnSpeed = 200;
     public Material SelectedMaterial;
+    public int NumTalents { get; set; } = 0;
     private Dictionary<Renderer, Material> _baseMaterialDictionary;
 
     //upgradeable
-    public int _fireRateUpgradeIndex { get; protected set; } = 0;
+    public int FireRateUpgradeIndex { get; protected set; } = 0;
     public List<UpgradeStep> FireRateUpgrades;
 
-    public int _rangeUpgradeIndex { get; protected set; } = 0;
+    public int RangeUpgradeIndex { get; protected set; } = 0;
     public List<UpgradeStep> RangeUpgrades;
 
-    public int _damageUpgradeIndex { get; protected set; } = 0;
+    public int DamageUpgradeIndex { get; protected set; } = 0;
     public List<UpgradeStep> DamageUpgrades;
 
-    public int _maxTargetEnemiesUpgradeIndex { get; protected set; } = 0;
+    public int MaxTargetEnemiesUpgradeIndex { get; protected set; } = 0;
     public List<UpgradeStep> MaxTargetEnemiesUpgrades;
-    //upgradeable
 
+    public int TalentUpgradeIndex { get; protected set; } = -1;
+
+    //upgradeable
     public int BaseCost;
-    public string TowerName;
+    public TowerType TowerType;
 
     public static Tower PlayerSelectedTower = null;
 
     private bool CanFace { get { return TurretSwivel != null; } }
-    private bool CanAttack { get { return _isFacingTarget && _lastAttack.AddSeconds(FireRateUpgrades[_fireRateUpgradeIndex].Value) < DateTime.Now; } }
+    private bool CanAttack { get { return _isFacingTarget && _lastAttack.AddSeconds(FireRateUpgrades[FireRateUpgradeIndex].Value) < DateTime.Now; } }
     private bool _isFacingTarget;
     private DateTime _lastAttack;
     private LineRenderer _radiusDisplay;
@@ -83,9 +86,9 @@ public abstract class Tower : MonoBehaviour
         }
     }
 
-    private bool TargetEnemyInRange(Enemy enemy)
+    private bool IsTargetEnemyInRange(Enemy enemy)
     {
-        return Vector3.Distance(enemy.gameObject.transform.position, transform.position) <= RangeUpgrades[_rangeUpgradeIndex].Value;
+        return Vector3.Distance(enemy.gameObject.transform.position, transform.position) <= RangeUpgrades[RangeUpgradeIndex].Value;
     }
 
     // Use this for initialization
@@ -93,9 +96,9 @@ public abstract class Tower : MonoBehaviour
     {
         _targetedEnemies = new List<Enemy>();
         _isFacingTarget = true;
-        _lastAttack = DateTime.Now - TimeSpan.FromSeconds(FireRateUpgrades[_fireRateUpgradeIndex].Value);
+        _lastAttack = DateTime.Now - TimeSpan.FromSeconds(FireRateUpgrades[FireRateUpgradeIndex].Value);
         _radiusDisplay = this.gameObject.GetComponentInChildren<LineRenderer>();
-        UpdateRadiusDisplay(RangeUpgrades[_rangeUpgradeIndex].Value);
+        UpdateRadiusDisplay(RangeUpgrades[RangeUpgradeIndex].Value);
         _baseMaterialDictionary = new Dictionary<Renderer, Material>();
         foreach (Renderer r in this.gameObject.GetComponentsInChildren<Renderer>())
             _baseMaterialDictionary.Add(r, r.material);
@@ -104,7 +107,7 @@ public abstract class Tower : MonoBehaviour
     // Update is called once per frame
     protected void Update()
     {
-        if (_targetedEnemies.Count < MaxTargetEnemiesUpgrades[_maxTargetEnemiesUpgradeIndex].Value)
+        if (_targetedEnemies.Count < MaxTargetEnemiesUpgrades[MaxTargetEnemiesUpgradeIndex].Value)
             _targetedEnemies = PickEnemies();
         else
         {
@@ -112,7 +115,7 @@ public abstract class Tower : MonoBehaviour
             {
                 Enemy enemy = _targetedEnemies[i];
 
-                if (enemy == null || !enemy.isActiveAndEnabled || !TargetEnemyInRange(enemy))
+                if (enemy == null || !enemy.isActiveAndEnabled || !IsTargetEnemyInRange(enemy))
                 {
                     _targetedEnemies = PickEnemies();
                     break;
@@ -129,29 +132,30 @@ public abstract class Tower : MonoBehaviour
 
     public void UpgradeRange()
     {
-        if (_rangeUpgradeIndex < RangeUpgrades.Count - 1)
-            _rangeUpgradeIndex++;
-        UpdateRadiusDisplay(RangeUpgrades[_rangeUpgradeIndex].Value);
+        if (RangeUpgradeIndex < RangeUpgrades.Count - 1)
+            RangeUpgradeIndex++;
+        UpdateRadiusDisplay(RangeUpgrades[RangeUpgradeIndex].Value);
     }
 
     public void UpgradeFireRate()
     {
-        if (_fireRateUpgradeIndex < FireRateUpgrades.Count - 1)
-            _fireRateUpgradeIndex++;
+        if (FireRateUpgradeIndex < FireRateUpgrades.Count - 1)
+            FireRateUpgradeIndex++;
     }
 
     public void UpgradeDamage()
     {
-        if (_damageUpgradeIndex < DamageUpgrades.Count - 1)
-            _damageUpgradeIndex++;
+        if (DamageUpgradeIndex < DamageUpgrades.Count - 1)
+            DamageUpgradeIndex++;
     }
 
     public void UpgradeMaxTargetEnemies()
     {
-        if (_maxTargetEnemiesUpgradeIndex < MaxTargetEnemiesUpgrades.Count - 1)
-            _maxTargetEnemiesUpgradeIndex++;
+        if (MaxTargetEnemiesUpgradeIndex < MaxTargetEnemiesUpgrades.Count - 1)
+            MaxTargetEnemiesUpgradeIndex++;
     }
 
+    //abstract public void UpgradeTalent();
 
     public void ShowRadius()
     {

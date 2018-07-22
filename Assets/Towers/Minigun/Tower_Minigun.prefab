@@ -449,7 +449,7 @@ MonoBehaviour:
   - Cost: 0
     Value: 1
   BaseCost: 50
-  TowerName: Minigun
+  TowerType: 1
 --- !u!120 &120117282023538310
 LineRenderer:
   m_ObjectHideFlags: 1

@@ -268,7 +268,6 @@ public class ClickSpawnScript : MonoBehaviour
     /// <returns>previous can place value</returns>
     private bool DestroyPlacedCursorTower()
     {
-
         bool? couldPlace = placedCursorTower?.GetComponent<TowerCursorScript>()?.GoodPlace;
         GameObject.Destroy(placedCursorTower);
         placedCursorTower = null;

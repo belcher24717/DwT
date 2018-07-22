@@ -13,6 +13,8 @@ public static class TrajectoryFactory
         Vector3 vertical = GetVerticalVector(AtoB, gravityBase);
         float verticalDistance = vertical.magnitude * Mathf.Sign(Vector3.Dot(vertical, -gravityBase));
 
+        timeToTarget = Mathf.Min(AtoB.magnitude * timeToTarget, timeToTarget);
+
         float horizontalSpeed = horizontalDistance / timeToTarget;
         float verticalSpeed = (verticalDistance + ((0.5f * gravityBase.magnitude) * (timeToTarget * timeToTarget))) / timeToTarget;
 

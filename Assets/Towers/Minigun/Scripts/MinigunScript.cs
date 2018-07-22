@@ -13,7 +13,7 @@ public class MinigunScript : Tower
         if (Animator.GetCurrentAnimatorStateInfo(0).IsName("Spin"))
         {
             if (_targetedEnemies.Count > 0)
-                _targetedEnemies[0]?.TakeDamage((int)DamageUpgrades[_damageUpgradeIndex].Value, AttackType);
+                _targetedEnemies[0]?.TakeDamage((int)DamageUpgrades[DamageUpgradeIndex].Value, AttackType);
             return true;
         }
 
@@ -22,7 +22,7 @@ public class MinigunScript : Tower
 
     public override List<Enemy> PickEnemies()
     {
-        List<Enemy> pickList = PickEnemyFactory.PickClosestEnemy(RangeUpgrades[_rangeUpgradeIndex].Value, transform.position);
+        List<Enemy> pickList = PickEnemyFactory.PickClosestEnemy(RangeUpgrades[RangeUpgradeIndex].Value, transform.position);
 
         if((pickList[0] == null || !pickList[0].isActiveAndEnabled) && Spinning())
             Animator.Play("Spin Down");

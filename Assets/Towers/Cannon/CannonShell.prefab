@@ -117,6 +117,7 @@ MonoBehaviour:
   Radius: 10
   Explosion: {fileID: 198000012942003240, guid: 6922d374491aee94da678b8c5df3741a,
     type: 2}
+  TimeToTarget: 2
 --- !u!135 &135238123095239452
 SphereCollider:
   m_ObjectHideFlags: 1

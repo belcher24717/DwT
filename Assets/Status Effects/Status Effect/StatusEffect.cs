@@ -7,7 +7,6 @@ using System.Reflection;
 
 public class StatusEffect : MonoBehaviour
 {
-    
     public float Duration;
     public float EffectPercent;
     public MonoBehaviour ObjectToAffect;
@@ -28,8 +27,19 @@ public class StatusEffect : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        ApplyEffect();
-        _expireTime = DateTime.Now.AddSeconds(Duration);
+        var myEffects = this.gameObject.transform.parent.GetComponentsInChildren<StatusEffect>().Where(e => e.Id == Id);
+
+        //I'm the only affect
+        if (myEffects.Count() == 1)
+        {
+            ApplyEffect();
+            _expireTime = DateTime.Now.AddSeconds(Duration);
+        }
+        else
+        {
+            myEffects.Where(e => e != this).FirstOrDefault()?.Refresh();
+            Destroy(this.gameObject);
+        }
     }
 
     // Update is called once per frame

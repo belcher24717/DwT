@@ -35,7 +35,7 @@ public static class PickEnemyFactory
         return enemies;
     }
 
-    public static List<Enemy> PickEnemiesInRange(float range, Vector3 position, int max = int.MaxValue)
+    public static List<Enemy> PickEnemiesInRange(float range, Vector3 position, int max = int.MaxValue)//TODO: prefer targets that don't have a certain component
     {
         float distanceToEnemy;
         List<Enemy> enemiesInRange = new List<Enemy>();

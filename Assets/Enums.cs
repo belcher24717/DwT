@@ -19,4 +19,11 @@ public enum AttackType
     Chaos
 }
 
-
+public enum TowerType
+{
+    Cannon,
+    Minigun,
+    Pounder,
+    Saw,
+    Sniper
+}

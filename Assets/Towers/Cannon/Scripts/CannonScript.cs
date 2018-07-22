@@ -25,7 +25,7 @@ public class CannonScript : Tower
         CannonShellScript shell = Instantiate(Shell, ShellSpawnLocation.position, Quaternion.identity);
         if (_targetedEnemies.Count > 0)
         {
-            shell.Damage = (int)DamageUpgrades[_damageUpgradeIndex].Value;
+            shell.Damage = (int)DamageUpgrades[DamageUpgradeIndex].Value;
             shell.Target = _targetedEnemies[0]?.transform;
 
             Animator.Play("Shoot");
@@ -36,6 +36,6 @@ public class CannonScript : Tower
 
     public override List<Enemy> PickEnemies()
     {
-        return PickEnemyFactory.PickClosestEnemy(RangeUpgrades[_rangeUpgradeIndex].Value, transform.position);
+        return PickEnemyFactory.PickClosestEnemy(RangeUpgrades[RangeUpgradeIndex].Value, transform.position);
     }
 }

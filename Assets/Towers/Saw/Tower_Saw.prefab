@@ -550,7 +550,7 @@ MonoBehaviour:
   - Cost: 0
     Value: 5
   BaseCost: 30
-  TowerName: Saw
+  TowerType: 3
 --- !u!120 &120665900774716552
 LineRenderer:
   m_ObjectHideFlags: 1

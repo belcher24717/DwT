@@ -46,7 +46,11 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Speed < 2.5f)
+        GetComponent<NavMeshAgent>().speed = Speed;
+
+        if (Speed <= 0)
+            Animator?.Play("Idle");
+        else if(Speed < 2.5f)
             Animator?.Play("Walk");
         else
             Animator?.Play("Run");

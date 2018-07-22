@@ -39,7 +39,7 @@ public class SelectTowerScript : ClickSpawnScript
     {
         Selected = false;
         SetMesh();
-        uiText.SetText($"{Tower.TowerName}\n{Tower.BaseCost} TB");
+        uiText.SetText($"{Tower.TowerType}\n{Tower.BaseCost} TB");
     }
 
     // Update is called once per frame
